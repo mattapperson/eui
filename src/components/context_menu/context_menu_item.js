@@ -5,7 +5,7 @@ import React, {
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { EuiIcon } from '..';
+import { EuiIcon } from '../icon';
 
 export class EuiContextMenuItem extends Component {
   static propTypes = {
@@ -16,7 +16,7 @@ export class EuiContextMenuItem extends Component {
     hasPanel: PropTypes.bool,
     buttonRef: PropTypes.func,
     disabled: PropTypes.bool,
-  }
+  };
 
   render() {
     const {
