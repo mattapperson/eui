@@ -30,6 +30,13 @@ export {
 } from './call_out';
 
 export {
+  EuiChart,
+  EuiLine,
+  EuiArea,
+  EuiBar
+} from './chart';
+
+export {
   EuiCode,
   EuiCodeBlock,
 } from './code';
