@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import {
   EuiIcon,
-} from '..';
+} from '../icon';
 
 import {
   LEFT_ALIGNMENT,
@@ -34,13 +34,16 @@ export const EuiTableHeaderCell = ({
   });
 
   if (onSort) {
-    const sortIcon = (
-      <EuiIcon
-        className="euiTableSortIcon"
-        type={isSortAscending ? 'sortUp' : 'sortDown'}
-        size="m"
-      />
-    );
+    let sortIcon;
+    if (isSorted) {
+      sortIcon = (
+        <EuiIcon
+          className="euiTableSortIcon"
+          type={isSortAscending ? 'sortUp' : 'sortDown'}
+          size="m"
+        />
+      );
+    }
 
     const buttonClasses = classNames('euiTableHeaderButton', {
       'euiTableHeaderButton-isSorted': isSorted,

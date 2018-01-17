@@ -1,8 +1,39 @@
 # [`master`](https://github.com/elastic/eui/tree/master)
 
+No public interface changes since `0.0.13`.
+
+# [`0.0.13`](https://github.com/elastic/eui/tree/v0.0.13)
+
+- Added index management icons. [(#307)](https://github.com/elastic/eui/pull/307)
+
+**Breaking changes**
+
+- Revert test helper for async functions that throw exceptions [#306](https://github.com/elastic/eui/pull/306). See PR for details on how this can be handled in Jest 22.
+
+**Bug fixes**
+
+- Adjust toast z-index to show over modals [(#296)](https://github.com/elastic/eui/pull/296)
+- Fix nested `<EuiFlexItem>` collapse issue in IE [(#308)](https://github.com/elastic/eui/pull/308)
+
+# [`0.0.12`](https://github.com/elastic/eui/tree/v0.0.12)
+
+- Minor style-only changes to `EuiPagination`, button reset, `EuiTableHeaderCell`, and `EuiCodeBlock`  [(#298)](https://github.com/elastic/eui/pull/298)
+- All NPM dependencies now use ^ to install the latest minor version.
 - Added Apache, Nginx, MySQL logos [(#270)](https://github.com/elastic/eui/pull/270)
-- Fixed `<EuiContextMenu>` to pass the `event` argument to a `<EuiContextMenuItem>`'s `onClick` handler even when a panel is defined. [(#265)](https://github.com/elastic/eui/pull/265)
 - Added small version of `EuiCallOut` [(#269)](https://github.com/elastic/eui/pull/269)
+- Added first batch of TypeScript type definitions for components and services [(#252)](https://github.com/elastic/eui/pull/252)
+- Added button for expanding `<EuiCodeBlock>` instances to be full-screen. [(#259)](https://github.com/elastic/eui/pull/259)
+- Add test helper for async functions that throw exceptions [#301](https://github.com/elastic/eui/pull/301)
+
+**Bug fixes**
+
+- Removed padding on `<EuiPage>` mobile breakpoint. [(#282)](https://github.com/elastic/eui/pull/282)
+- Fixed some `<EuiIcon>` `type`s not setting their `viewBox` attribute, which caused them to not honor the `size` properly. [(#277)](https://github.com/elastic/eui/pull/277)
+- Fixed `<EuiContextMenu>` to pass the `event` argument to a `<EuiContextMenuItem>`'s `onClick` handler even when a panel is defined. [(#265)](https://github.com/elastic/eui/pull/265)
+
+**Breaking changes**
+
+- Removed `color` prop from `<EuiCodeBlock>`. This component's highlighting now matches whichever theme is currently active. See PR for details on SCSS breaking changes. [(#259)](https://github.com/elastic/eui/pull/259)
 
 # [`0.0.11`](https://github.com/elastic/eui/tree/v0.0.11)
 
