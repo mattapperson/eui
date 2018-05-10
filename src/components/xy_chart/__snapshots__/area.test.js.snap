@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EuiArea all props are rendered 1`] = `
-<FlexibleInnerCustomPlot
+<FlexibleXYChart
   height={200}
   width={600}
 >
@@ -13,7 +13,7 @@ exports[`EuiArea all props are rendered 1`] = `
       }
     }
   >
-    <InnerCustomPlot
+    <XYChart
       animation={null}
       height={200}
       mode="linear"
@@ -4558,13 +4558,13 @@ exports[`EuiArea all props are rendered 1`] = `
           />
         </div>
       </XYPlot>
-    </InnerCustomPlot>
+    </XYChart>
   </div>
-</FlexibleInnerCustomPlot>
+</FlexibleXYChart>
 `;
 
 exports[`EuiArea is rendered 1`] = `
-<FlexibleInnerCustomPlot
+<FlexibleXYChart
   height={200}
   width={600}
 >
@@ -4576,7 +4576,7 @@ exports[`EuiArea is rendered 1`] = `
       }
     }
   >
-    <InnerCustomPlot
+    <XYChart
       animation={null}
       height={200}
       mode="linear"
@@ -9099,7 +9099,7 @@ exports[`EuiArea is rendered 1`] = `
           />
         </div>
       </XYPlot>
-    </InnerCustomPlot>
+    </XYChart>
   </div>
-</FlexibleInnerCustomPlot>
+</FlexibleXYChart>
 `;

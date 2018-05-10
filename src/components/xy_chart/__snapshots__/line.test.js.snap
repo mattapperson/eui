@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EuiLine all props are rendered 1`] = `
-<FlexibleInnerCustomPlot
+<FlexibleXYChart
   height={200}
   width={600}
 >
@@ -13,7 +13,7 @@ exports[`EuiLine all props are rendered 1`] = `
       }
     }
   >
-    <InnerCustomPlot
+    <XYChart
       animation={null}
       height={200}
       mode="linear"
@@ -3939,13 +3939,13 @@ exports[`EuiLine all props are rendered 1`] = `
           />
         </div>
       </XYPlot>
-    </InnerCustomPlot>
+    </XYChart>
   </div>
-</FlexibleInnerCustomPlot>
+</FlexibleXYChart>
 `;
 
 exports[`EuiLine is rendered 1`] = `
-<FlexibleInnerCustomPlot
+<FlexibleXYChart
   height={200}
   width={600}
 >
@@ -3957,7 +3957,7 @@ exports[`EuiLine is rendered 1`] = `
       }
     }
   >
-    <InnerCustomPlot
+    <XYChart
       animation={null}
       height={200}
       mode="linear"
@@ -7872,7 +7872,7 @@ exports[`EuiLine is rendered 1`] = `
           />
         </div>
       </XYPlot>
-    </InnerCustomPlot>
+    </XYChart>
   </div>
-</FlexibleInnerCustomPlot>
+</FlexibleXYChart>
 `;

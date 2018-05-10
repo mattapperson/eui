@@ -69,9 +69,6 @@ import { CardExample }
 import { CallOutExample }
   from './views/call_out/call_out_example';
 
-  import { ChartExample }
-  from './views/chart/chart_example';
-
 import { CodeEditorExample }
   from './views/code_editor/code_editor_example';
 
@@ -204,7 +201,10 @@ import { ToastExample }
 import { ToolTipExample }
   from './views/tool_tip/tool_tip_example';
 
-import { Changelog }
+  import { XYChartExample }
+  from './views/xy_chart/xy_chart_example';
+
+  import { Changelog }
   from './views/package/changelog';
 
 /**
@@ -305,7 +305,6 @@ const navigation = [{
     BadgeExample,
     CallOutExample,
     CardExample,
-    ChartExample,
     CodeExample,
     DescriptionListExample,
     EmptyPromptExample,
@@ -319,6 +318,7 @@ const navigation = [{
     TitleExample,
     ToastExample,
     ToolTipExample,
+    XYChartExample,
   ].map(example => createExample(example)),
 }, {
   name: 'Forms',

@@ -35,13 +35,6 @@ export {
 } from './call_out';
 
 export {
-  EuiChart,
-  EuiLine,
-  EuiArea,
-  EuiBar
-} from './chart';
-
-export {
   EuiCode,
   EuiCodeBlock,
   EuiCodeBlockImpl,
@@ -304,3 +297,10 @@ export {
   EuiIconTip,
   EuiToolTip,
 } from './tool_tip';
+
+export {
+  EuiXYChart,
+  EuiLine,
+  EuiArea,
+  EuiBar
+} from './xy_chart';
