@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import { getSecureRelForTarget } from '../../../services';
+
 import {
   ICON_TYPES,
   EuiIcon,
@@ -37,6 +39,11 @@ export const EuiButtonIcon = ({
   iconType,
   color,
   isDisabled,
+  href,
+  type,
+  target,
+  rel,
+  buttonRef,
   ...rest
 }) => {
 
@@ -60,15 +67,34 @@ export const EuiButtonIcon = ({
     );
   }
 
-  return (
-    <button
-      disabled={isDisabled}
-      className={classes}
-      {...rest}
-    >
-      {buttonIcon}
-    </button>
-  );
+  if (href) {
+    const secureRel = getSecureRelForTarget(target, rel);
+
+    return (
+      <a
+        className={classes}
+        href={href}
+        target={target}
+        rel={secureRel}
+        ref={buttonRef}
+        {...rest}
+      >
+        {buttonIcon}
+      </a>
+    );
+  } else {
+    return (
+      <button
+        disabled={isDisabled}
+        className={classes}
+        type={type}
+        ref={buttonRef}
+        {...rest}
+      >
+        {buttonIcon}
+      </button>
+    );
+  }
 };
 
 EuiButtonIcon.propTypes = {
@@ -78,6 +104,12 @@ EuiButtonIcon.propTypes = {
   color: PropTypes.oneOf(COLORS),
   isDisabled: PropTypes.bool,
   'aria-label': accessibleButtonIcon,
+  href: PropTypes.string,
+  target: PropTypes.string,
+  rel: PropTypes.string,
+  onClick: PropTypes.func,
+  type: PropTypes.string,
+  buttonRef: PropTypes.func,
 };
 
 EuiButtonIcon.defaultProps = {

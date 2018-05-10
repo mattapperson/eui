@@ -11,11 +11,12 @@ $textColors: (
 
 // Create color modifiers based on the map
 @each $name, $color in $textColors {
-  .euiTextColor.euiTextColor--#{$name} {
-    color: $color !important;
+  .euiTextColor--#{$name} {
 
-    // We need a blanket approach for coloring. It should overule everything.
-    * {
+    // The below function makes sure the color is accessible on our default background.
+    color: makeHighContrastColor($color, $euiColorEmptyShade);
+
+    @if $name == "ghost" {
       color: $color !important;
     }
   }

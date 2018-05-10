@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { renderToHtml } from '../../services';
 
@@ -7,7 +7,10 @@ import {
 } from '../../components';
 
 import {
+  EuiAccordion,
   EuiCode,
+  EuiCallOut,
+  EuiSpacer,
 } from '../../../../src/components';
 
 import Accordion from './accordion';
@@ -26,10 +29,31 @@ import AccordionOpen from './accordion_open';
 const accordionOpenSource = require('!!raw-loader!./accordion_open');
 const accordionOpenHtml = renderToHtml(AccordionOpen);
 
+import AccordionGrow from './accordion_grow';
+const accordionGrowSource = require('!!raw-loader!./accordion_grow');
+const accordionGrowHtml = renderToHtml(AccordionGrow);
+
 export const AccordionExample = {
   title: 'Accordion',
+  intro: (
+    <Fragment>
+      <EuiCallOut
+        title="Take care including flex group content within accordions"
+      >
+        <p>
+          <EuiCode>EuiFlexGroup</EuiCode>&apos;s negative margins can sometimes
+          create scrollbars within <EuiCode>EuiAccordion</EuiCode> because of
+          the overflow tricks the used to hide content. If you run into this issue make
+          sure your <EuiCode>paddingSize</EuiCode> prop is large enough to account for
+          the <EuiCode>gutterSize</EuiCode> of any nested flex groups.
+        </p>
+      </EuiCallOut>
+
+      <EuiSpacer size="l" />
+    </Fragment>
+  ),
   sections: [{
-    title: 'Accordion (unstyled)',
+    title: 'Unstyled',
     source: [{
       type: GuideSectionTypes.JS,
       code: accordionSource,
@@ -57,6 +81,7 @@ export const AccordionExample = {
         </p>
       </div>
     ),
+    props: { EuiAccordion },
     demo: <Accordion />,
   }, {
     title: 'Accordion can have extra actions',
@@ -92,6 +117,22 @@ export const AccordionExample = {
       </p>
     ),
     demo: <AccordionOpen />,
+  }, {
+    title: 'Accordion content can dynamically change height',
+    source: [{
+      type: GuideSectionTypes.JS,
+      code: accordionGrowSource,
+    }, {
+      type: GuideSectionTypes.HTML,
+      code: accordionGrowHtml,
+    }],
+    text: (
+      <p>
+        If an accordion&rsquo;s content changes height while the accordion is open,
+        it will resize dynamically.
+      </p>
+    ),
+    demo: <AccordionGrow />,
   }, {
     title: 'Accordion for forms',
     source: [{

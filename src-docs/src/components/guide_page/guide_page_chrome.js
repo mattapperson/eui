@@ -13,6 +13,7 @@ import {
   EuiIcon,
   EuiSideNav,
   EuiSpacer,
+  EuiText,
 } from '../../../../src/components';
 
 import {
@@ -38,6 +39,7 @@ export class GuidePageChrome extends Component {
   onSearchChange = event => {
     this.setState({
       search: event.target.value,
+      isSideNavOpenOnMobile: event.target.value !== '',
     });
   };
 
@@ -50,6 +52,18 @@ export class GuidePageChrome extends Component {
   onClickLink = id => {
     // Scroll to element.
     this.scrollTo($(`#${id}`).offset().top - 20);
+
+    this.setState({
+      search: '',
+      isSideNavOpenOnMobile: false,
+    });
+  };
+
+  onClickRoute = () => {
+    this.setState({
+      search: '',
+      isSideNavOpenOnMobile: false,
+    });
   };
 
   renderIdentity() {
@@ -90,15 +104,16 @@ export class GuidePageChrome extends Component {
     }));
   }
 
-  renderGuidelineNavItems() {
-    const matchingItems = this.props.guidelines.filter(item => (
-      item.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
-    ));
+  renderSideNav = sideNav => {
+    // TODO: Add contents pages
+    const sideNavSections = [];
 
-    return {
-      name: 'Guidelines',
-      id: 'guidelines',
-      items: matchingItems.map(item => {
+    sideNav.forEach(section => {
+      const matchingItems = section.items.filter(item => (
+        item.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 && item.hidden !== true
+      ));
+
+      const items = matchingItems.map(item => {
         const {
           name,
           path,
@@ -106,131 +121,78 @@ export class GuidePageChrome extends Component {
         } = item;
 
         return {
-          id: `guideline-${path}`,
+          id: `${section.type}-${path}`,
           name,
           href: `#/${path}`,
+          onClick: this.onClickRoute.bind(this),
           items: this.renderSubSections(sections),
           isSelected: name === this.props.currentRouteName,
         };
-      }),
-    };
-  }
+      });
 
-  renderComponentNavItems() {
-    const matchingItems = this.props.components.filter(item => (
-      item.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
-    ));
+      if (!items.length) {
+        return;
+      }
 
-    return {
-      name: 'Components',
-      id: 'components',
-      items: matchingItems.map(item => {
-        const {
-          name,
-          path,
-          sections,
-        } = item;
+      sideNavSections.push({
+        name: section.name,
+        id: section.type,
+        items,
+      });
+    });
 
-        return {
-          id: `component-${path}`,
-          name,
-          href: `#/${path}`,
-          items: this.renderSubSections(sections),
-          isSelected: name === this.props.currentRouteName,
-        };
-      }),
-    };
-  }
-
-  rendePatternNavItems() {
-    const matchingItems = this.props.patterns.filter(item => (
-      item.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
-    ));
-
-    return {
-      name: 'Patterns',
-      id: 'patterns',
-      items: matchingItems.map(item => {
-        const {
-          name,
-          path,
-          sections,
-        } = item;
-
-        return {
-          id: `pattern-${path}`,
-          name,
-          href: `#/${path}`,
-          items: this.renderSubSections(sections),
-          isSelected: name === this.props.currentRouteName,
-        };
-      }),
-    };
-  }
-
-  renderSandboxNavItems() {
-    const matchingItems = this.props.sandboxes.filter(item => (
-      item.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
-    ));
-
-    return {
-      name: 'Sandboxes',
-      id: 'sandboxes',
-      items: matchingItems.map(item => {
-        const {
-          name,
-          path,
-        } = item;
-
-        return {
-          id: `sandbox-${path}`,
-          name,
-          href: `#/${path}`,
-          isSelected: name === this.props.currentRouteName,
-        };
-      }),
-    };
-  }
+    return sideNavSections;
+  };
 
   render() {
-    const sideNav = [
-      this.renderGuidelineNavItems(),
-      this.renderComponentNavItems(),
-      this.rendePatternNavItems(),
-      this.renderSandboxNavItems(),
-    ];
+    const sideNav = this.renderSideNav(this.props.navigation);
 
-    return (
-      <div>
-        {this.renderIdentity()}
+    let sideNavContent;
 
-        <EuiSpacer size="m" />
-
-        <EuiFieldSearch
-          placeholder="Search..."
-          value={this.state.search}
-          onChange={this.onSearchChange}
-        />
-
-        <EuiSpacer size="m" />
-
+    if (sideNav.length) {
+      sideNavContent = (
         <EuiSideNav
           mobileTitle="Navigate components"
           toggleOpenOnMobile={this.toggleOpenOnMobile}
           isOpenOnMobile={this.state.isSideNavOpenOnMobile}
           items={sideNav}
         />
+      );
+    } else {
+      sideNavContent = (
+        <EuiText color="subdued" size="s">
+          <p>No matches</p>
+        </EuiText>
+      );
+    }
+
+    return (
+      <div className="guideSideNav">
+        <div className="guideSideNav__identity">
+          {this.renderIdentity()}
+
+          <EuiSpacer size="m" />
+
+          <div className="guideSideNav__search">
+            <EuiFieldSearch
+              placeholder="Search"
+              value={this.state.search}
+              onChange={this.onSearchChange}
+            />
+          </div>
+        </div>
+
+        <div className="guideSideNav__content">
+          {sideNavContent}
+        </div>
       </div>
     );
   }
 }
 
 GuidePageChrome.propTypes = {
-  currentRouteName: PropTypes.string.isRequired,
+  currentRouteName: PropTypes.string,
   onToggleTheme: PropTypes.func.isRequired,
   selectedTheme: PropTypes.string.isRequired,
-  guidelines: PropTypes.array.isRequired,
-  components: PropTypes.array.isRequired,
-  patterns: PropTypes.array.isRequired,
-  sandboxes: PropTypes.array.isRequired,
+  navigation: PropTypes.array.isRequired,
 };

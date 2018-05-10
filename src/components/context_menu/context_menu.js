@@ -52,16 +52,32 @@ function mapPanelItemsToPanels(panels) {
   return idAndItemIndexToPanelIdMap;
 }
 
+export const EuiContextMenuPanelItemShape = PropTypes.shape({
+  name: PropTypes.string,
+  icon: PropTypes.node,
+  onClick: PropTypes.func,
+  // If given, shows the panel with this id when clicked:
+  panel: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  disabled: PropTypes.bool,
+});
+
+export const EuiContextMenuPanelShape = PropTypes.shape({
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  content: PropTypes.node,  // Either content or items array should be given.
+  items: PropTypes.arrayOf(EuiContextMenuPanelItemShape),
+  title: PropTypes.string,
+});
+
 export class EuiContextMenu extends Component {
   static propTypes = {
     className: PropTypes.string,
-    panels: PropTypes.array,
+    panels: PropTypes.arrayOf(EuiContextMenuPanelShape),
     initialPanelId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  }
+  };
 
   static defaultProps = {
     panels: [],
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -69,6 +85,7 @@ export class EuiContextMenu extends Component {
     this.idToPanelMap = {};
     this.idToPreviousPanelIdMap = {};
     this.idAndItemIndexToPanelIdMap = {};
+    this.idToRenderedItemsMap = {};
 
     this.state = {
       height: undefined,
@@ -153,6 +170,7 @@ export class EuiContextMenu extends Component {
     this.idToPanelMap = mapIdsToPanels(panels);
     this.idToPreviousPanelIdMap = mapIdsToPreviousPanels(panels);
     this.idAndItemIndexToPanelIdMap = mapPanelItemsToPanels(panels);
+    this.mapIdsToRenderedItems(panels);
   }
 
   componentWillMount() {
@@ -164,6 +182,15 @@ export class EuiContextMenu extends Component {
       this.updatePanelMaps(nextProps.panels);
     }
   }
+
+  mapIdsToRenderedItems = panels => {
+    this.idToRenderedItemsMap = {};
+
+    // Pre-rendering the items lets us check reference equality inside of EuiContextMenuPanel.
+    panels.forEach(panel => {
+      this.idToRenderedItemsMap[panel.id] = this.renderItems(panel.items);
+    });
+  };
 
   renderItems(items = []) {
     return items.map((item, index) => {
@@ -227,7 +254,7 @@ export class EuiContextMenu extends Component {
         transitionType={this.state.isOutgoingPanelVisible ? transitionType : undefined}
         transitionDirection={this.state.isOutgoingPanelVisible ? this.state.transitionDirection : undefined}
         hasFocus={transitionType === 'in'}
-        items={this.renderItems(panel.items)}
+        items={this.idToRenderedItemsMap[panelId]}
         initialFocusedItemIndex={this.state.isUsingKeyboardToNavigate ? this.state.focusedItemIndex : undefined}
         onUseKeyboardToNavigate={this.onUseKeyboardToNavigate}
         showNextPanel={this.showNextPanel}

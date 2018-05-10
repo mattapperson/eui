@@ -8,6 +8,7 @@ import {
 
 import {
   EuiCode,
+  EuiLink,
 } from '../../../../src/components';
 
 import Link from './link';
@@ -17,7 +18,6 @@ const linkHtml = renderToHtml(Link);
 export const LinkExample = {
   title: 'Link',
   sections: [{
-    title: 'Link',
     source: [{
       type: GuideSectionTypes.JS,
       code: linkSource,
@@ -34,6 +34,7 @@ export const LinkExample = {
         link.
       </p>
     ),
+    props: { EuiLink },
     demo: <Link />,
   }],
 };

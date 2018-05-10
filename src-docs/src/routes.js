@@ -14,12 +14,34 @@ import {
   EuiErrorBoundary,
 } from '../../src/components';
 
-import { Slugify } from './services';
-
 // Guidelines
+
+import ButtonGuidelines
+  from './views/guidelines/button';
+
+import ColorGuidelines
+  from './views/guidelines/colors';
+
+import ModalGuidelines
+  from './views/guidelines/modals';
+
+import TextScales
+  from './views/text_scaling/text_scaling_sandbox';
+
+import ToastGuidelines
+  from './views/guidelines/toasts';
 
 import WritingGuidelines
   from './views/guidelines/writing';
+
+// Services
+
+import { IsColorDarkExample }
+  from './views/is_color_dark/is_color_dark_example';
+
+
+import { UtilityClassesExample }
+  from './views/utility_classes/utility_classes_example';
 
 // Component examples
 
@@ -41,10 +63,13 @@ import { BottomBarExample }
 import { ButtonExample }
   from './views/button/button_example';
 
+import { CardExample }
+  from './views/card/card_example';
+
 import { CallOutExample }
   from './views/call_out/call_out_example';
 
-import { ChartExample }
+  import { ChartExample }
   from './views/chart/chart_example';
 
 import { CodeEditorExample }
@@ -53,11 +78,26 @@ import { CodeEditorExample }
 import { CodeExample }
   from './views/code/code_example';
 
+import { ColorPickerExample }
+  from './views/color_picker/color_picker_example';
+
+import { ComboBoxExample }
+  from './views/combo_box/combo_box_example';
+
 import { ContextMenuExample }
   from './views/context_menu/context_menu_example';
 
+import { DatePickerExample }
+  from './views/date_picker/date_picker_example';
+
+import { DelayHideExample }
+  from './views/delay_hide/delay_hide_example';
+
 import { DescriptionListExample }
   from './views/description_list/description_list_example';
+
+import { EmptyPromptExample }
+  from './views/empty_prompt/empty_prompt_example';
 
 import { ErrorBoundaryExample }
   from './views/error_boundary/error_boundary_example';
@@ -65,20 +105,32 @@ import { ErrorBoundaryExample }
 import { ExpressionExample }
   from './views/expression/expression_example';
 
+import { FilterGroupExample }
+  from './views/filter_group/filter_group_example';
+
 import { FlexExample }
   from './views/flex/flex_example';
 
 import { FlyoutExample }
   from './views/flyout/flyout_example';
 
-import { FormExample }
-  from './views/form/form_example';
+import { FormControlsExample }
+  from './views/form_controls/form_controls_example';
+
+import { FormLayoutsExample }
+  from './views/form_layouts/form_layouts_example';
+
+import { FormValidationExample }
+  from './views/form_validation/form_validation_example';
 
 import { HeaderExample }
   from './views/header/header_example';
 
 import { HealthExample }
   from './views/health/health_example';
+
+import { HighlightExample }
+  from './views/highlight/highlight_example';
 
 import { HorizontalRuleExample }
   from './views/horizontal_rule/horizontal_rule_example';
@@ -116,8 +168,14 @@ import { PanelExample }
 import { PopoverExample }
   from './views/popover/popover_example';
 
+import { PortalExample }
+  from './views/portal/portal_example';
+
 import { ProgressExample }
   from './views/progress/progress_example';
+
+import { SearchBarExample }
+  from './views/search_bar/search_bar_example';
 
 import { SideNavExample }
   from './views/side_nav/side_nav_example';
@@ -129,7 +187,7 @@ import { StepsExample }
   from './views/steps/steps_example';
 
 import { TableExample }
-  from './views/table/table_example';
+  from './views/tables/tables_example';
 
 import { TabsExample }
   from './views/tabs/tabs_example';
@@ -143,41 +201,43 @@ import { TitleExample }
 import { ToastExample }
   from './views/toast/toast_example';
 
-import { TooltipExample }
-  from './views/tooltip/tooltip_example';
+import { ToolTipExample }
+  from './views/tool_tip/tool_tip_example';
 
-// Patterns
+import { Changelog }
+  from './views/package/changelog';
 
-// Sandboxes
+/**
+ * Lowercases input and replaces spaces with hyphens:
+ * e.g. 'GridView Example' -> 'gridview-example'
+ */
+const slugify = str => {
+  const parts = str
+    .toLowerCase()
+    .replace(/[-]+/g, ' ')
+    .replace(/[^\w^\s]+/g, '')
+    .replace(/ +/g, ' ').split(' ');
+  return parts.join('-');
+};
 
-import AdvancedSettingsSandbox
-  from './views/kibana/advanced_settings_sandbox';
+const createExample = (example) => {
+  if (!example) {
+    throw new Error(`One of your example pages is undefined. This usually happens when you export or import it with the wrong name.`);
+  }
 
-import WatchesSandbox
-  from './views/kibana/watches_sandbox';
-
-import TextScalingSandbox
-  from './views/text_scaling/text_scaling_sandbox';
-
-const guidelines = [{
-  name: 'Writing',
-  component: WritingGuidelines,
-}];
-
-const createExample = ({ title, intro, sections }) => {
+  const { title, intro, sections } = example;
   sections.forEach(section => {
-    section.id = Slugify.one(section.title);
+    section.id = slugify(section.title || title);
   });
 
   const renderedSections = sections.map(section => createElement(GuideSection, {
-    key: section.title,
+    key: section.title || title,
     ...section
   }));
 
   const component = () => (
     <EuiErrorBoundary>
-      <GuidePage title={title}>
-        {intro}
+      <GuidePage title={title} intro={intro}>
         {renderedSections}
       </GuidePage>
     </EuiErrorBoundary>
@@ -190,80 +250,126 @@ const createExample = ({ title, intro, sections }) => {
   };
 };
 
-// Component route names should match the component name exactly.
-const components = [
-  AccessibilityExample,
-  AccordionExample,
-  AvatarExample,
-  BadgeExample,
-  BottomBarExample,
-  ButtonExample,
-  CallOutExample,
-  ChartExample,
-  CodeEditorExample,
-  CodeExample,
-  ContextMenuExample,
-  DescriptionListExample,
-  ErrorBoundaryExample,
-  ExpressionExample,
-  FlexExample,
-  FlyoutExample,
-  FormExample,
-  HeaderExample,
-  HealthExample,
-  HorizontalRuleExample,
-  IconExample,
-  ImageExample,
-  KeyPadMenuExample,
-  LinkExample,
-  LoadingExample,
-  ModalExample,
-  OutsideClickDetectorExample,
-  PageExample,
-  PaginationExample,
-  PanelExample,
-  PopoverExample,
-  ProgressExample,
-  SideNavExample,
-  SpacerExample,
-  StepsExample,
-  TableExample,
-  TabsExample,
-  TextExample,
-  TitleExample,
-  ToastExample,
-  TooltipExample,
-].map(example => createExample(example));
-
-const patterns = [
-].map(example => createExample(example));
-
-const sandboxes = [{
-  name: 'Advanced Settings',
-  component: AdvancedSettingsSandbox,
+const navigation = [{
+  name: 'Guidelines',
+  items: [{
+    name: 'Buttons',
+    component: ButtonGuidelines,
+  }, {
+    name: 'Colors',
+    component: ColorGuidelines,
+  }, {
+    name: 'Modals',
+    component: ModalGuidelines,
+  }, {
+    name: 'Text scales',
+    component: TextScales,
+  }, {
+    name: 'Toasts',
+    component: ToastGuidelines,
+  }, {
+    name: 'Writing',
+    component: WritingGuidelines,
+  }],
 }, {
-  name: 'Watches',
-  component: WatchesSandbox,
+  name: 'Layout',
+  items: [
+    AccordionExample,
+    BottomBarExample,
+    FlexExample,
+    FlyoutExample,
+    HeaderExample,
+    HorizontalRuleExample,
+    ModalExample,
+    PageExample,
+    PanelExample,
+    PopoverExample,
+    SpacerExample,
+  ].map(example => createExample(example)),
 }, {
-  name: 'Text scales',
-  component: TextScalingSandbox,
-}];
+  name: 'Navigation',
+  items: [
+    ButtonExample,
+    ContextMenuExample,
+    KeyPadMenuExample,
+    LinkExample,
+    PaginationExample,
+    SideNavExample,
+    StepsExample,
+    TabsExample,
+  ].map(example => createExample(example)),
+}, {
+  name: 'Display',
+  items: [
+    AvatarExample,
+    BadgeExample,
+    CallOutExample,
+    CardExample,
+    ChartExample,
+    CodeExample,
+    DescriptionListExample,
+    EmptyPromptExample,
+    HealthExample,
+    IconExample,
+    ImageExample,
+    LoadingExample,
+    ProgressExample,
+    TableExample,
+    TextExample,
+    TitleExample,
+    ToastExample,
+    ToolTipExample,
+  ].map(example => createExample(example)),
+}, {
+  name: 'Forms',
+  items: [
+    FormLayoutsExample,
+    FormControlsExample,
+    FormValidationExample,
+    ComboBoxExample,
+    ColorPickerExample,
+    CodeEditorExample,
+    DatePickerExample,
+    ExpressionExample,
+    FilterGroupExample,
+    SearchBarExample,
+  ].map(example => createExample(example)),
+}, {
+  name: 'Utilities',
+  items: [
+    AccessibilityExample,
+    DelayHideExample,
+    ErrorBoundaryExample,
+    HighlightExample,
+    IsColorDarkExample,
+    OutsideClickDetectorExample,
+    PortalExample,
+    UtilityClassesExample,
+  ].map(example => createExample(example)),
+}, {
+  name: 'Package',
+  items: [
+    Changelog
+  ]
+}].map(({ name, items, ...rest }) => ({
+  name,
+  type: slugify(name),
+  items: items.map(({ name: itemName, ...rest }) => ({
+    name: itemName,
+    path: `${slugify(name)}/${slugify(itemName)}`,
+    ...rest,
+  })),
+  ...rest
+}));
 
-sandboxes.forEach(sandbox => { sandbox.isSandbox = true; });
-
-const allRoutes = [
-  ...guidelines,
-  ...components,
-  ...sandboxes,
-  ...patterns,
-];
+const allRoutes = navigation.reduce((accummulatedRoutes, section) => {
+  accummulatedRoutes.push(...section.items);
+  return accummulatedRoutes;
+}, []);
 
 export default {
   history: useRouterHistory(createHashHistory)(),
-  guidelines: Slugify.each(guidelines, 'name', 'path'),
-  components: Slugify.each(components, 'name', 'path'),
-  patterns: Slugify.each(patterns, 'name', 'path'),
-  sandboxes: Slugify.each(sandboxes, 'name', 'path'),
+  navigation,
 
   getRouteForPath: path => {
     // React-router kinda sucks. Sometimes the path contains a leading slash, sometimes it doesn't.

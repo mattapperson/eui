@@ -1,35 +1,7 @@
-// Mixes a provided color with white.
-@function tint($color, $percent) {
-  @return mix(#fff, $color, $percent);
-}
-
-// Mixes a provided color with black.
-@function shade($color, $percent) {
-  @return mix(#000, $color, $percent);
-}
-
-// For theming. Checks the text color and tells us whether it's light or dark.
-// Based on that we either tint or shade.
-@function tintOrShade($color, $tint, $shade) {
-  @if (lightness($euiTextColor) > 50) {
-    @return shade($color, $shade);
-  } @else {
-    @return tint($color, $tint);
-  }
-}
-
-@function shadeOrTint($color, $shade, $tint) {
-  @if (lightness($euiTextColor) < 50) {
-    @return shade($color, $shade);
-  } @else {
-    @return tint($color, $tint);
-  }
-}
-
 // Core
 
 $euiColorPrimary: #0079a5 !default;
-$euiColorSecondary: #00A69B !default;
+$euiColorSecondary: #017F75 !default;
 $euiColorAccent: #DD0A73 !default;
 $euiColorHighlight: #FFFBF1 !default;
 $euiColorGhost: #FFF !default;
@@ -47,13 +19,27 @@ $euiColorMediumShade: #999 !default;
 $euiColorDarkShade: #666 !default;
 $euiColorDarkestShade: #3F3F3F !default;
 $euiColorFullShade: #000 !default;
+$euiColorSlightHue: #909AA1 !default;
 
 // Every color below must be based mathmatically on the set above.
 
 $euiTextColor: $euiColorDarkestShade !default;
-$euiTitleColor: $euiColorFullShade !default;
+$euiTitleColor: tintOrShade($euiColorFullShade, 10%, 0%) !default;
 $euiLinkColor: $euiColorPrimary !default;
 $euiFocusBackgroundColor: tintOrShade($euiColorPrimary, 90%, 50%) !default;
+
+// Visualization colors
+
+$euiColorVis0: #00B3A4 !default;
+$euiColorVis1: #3185FC !default;
+$euiColorVis2: #DB1374 !default;
+$euiColorVis3: #490092 !default;
+$euiColorVis4: #FEB6DB !default;
+$euiColorVis5: #E6C220 !default;
+$euiColorVis6: #BFA180 !default;
+$euiColorVis7: #F98510 !default;
+$euiColorVis8: #461A0A !default;
+$euiColorVis9: #920000 !default;
 
 // Code
 

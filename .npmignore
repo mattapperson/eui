@@ -2,7 +2,13 @@ node_modules/
 docs/
 reports/
 tmp/
+wiki/
+generator-eui/
+test/
+src-docs/
 
+# ignore everything in `scripts` except postinstall.js
+scripts/!(postinstall.js)
 
 .DS_Store
 .eslintcache

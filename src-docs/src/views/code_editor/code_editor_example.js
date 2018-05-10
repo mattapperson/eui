@@ -8,6 +8,7 @@ import {
 
 import {
   EuiCode,
+  EuiCodeEditor,
 } from '../../../../src/components';
 
 import CodeEditor from './code_editor';
@@ -21,7 +22,6 @@ const readOnlyrHtml = renderToHtml(ReadOnly);
 export const CodeEditorExample = {
   title: 'Code Editor',
   sections: [{
-    title: 'Code Editor',
     source: [{
       type: GuideSectionTypes.JS,
       code: codeEditorSource,
@@ -42,6 +42,7 @@ export const CodeEditorExample = {
         </p>
       </div>
     ),
+    props: { EuiCodeEditor },
     demo: <CodeEditor />,
   }, {
     title: 'Read-only',

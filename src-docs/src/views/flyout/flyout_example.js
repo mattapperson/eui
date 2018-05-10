@@ -8,6 +8,7 @@ import {
 
 import {
   EuiCode,
+  EuiFlyout,
 } from '../../../../src/components';
 
 import { Flyout } from './flyout';
@@ -26,7 +27,6 @@ export const FlyoutExample = {
   title: 'Flyout',
   sections: [
     {
-      title: 'Flyout',
       source: [{
         type: GuideSectionTypes.JS,
         code: flyoutSource,
@@ -54,6 +54,7 @@ export const FlyoutExample = {
           </ul>
         </div>
       ),
+      props: { EuiFlyout },
       demo: <Flyout />,
     },
     {

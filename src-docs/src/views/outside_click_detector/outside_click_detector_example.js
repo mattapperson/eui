@@ -8,6 +8,7 @@ import {
 
 import {
   EuiCode,
+  EuiOutsideClickDetector,
 } from '../../../../src/components';
 
 import OutsideClickDetector from './outside_click_detector';
@@ -15,9 +16,8 @@ const outsideClickDetectorSource = require('!!raw-loader!./outside_click_detecto
 const outsideClickDetectorHtml = renderToHtml(OutsideClickDetector);
 
 export const OutsideClickDetectorExample = {
-  title: 'OutsideClickDetector',
+  title: 'Outside Click Detector',
   sections: [{
-    title: 'OutsideClickDetector',
     source: [{
       type: GuideSectionTypes.JS,
       code: outsideClickDetectorSource,
@@ -31,6 +31,7 @@ export const OutsideClickDetectorExample = {
         child element.
       </p>
     ),
+    props: { EuiOutsideClickDetector },
     demo: <OutsideClickDetector />,
   }],
 };

@@ -19,6 +19,9 @@ export const EuiSelect = ({
   isInvalid,
   fullWidth,
   isLoading,
+  hasNoInitialSelection,
+  defaultValue,
+  value,
   ...rest
 }) => {
   const classes = classNames(
@@ -29,6 +32,20 @@ export const EuiSelect = ({
     },
     className
   );
+
+  let emptyOptionNode;
+  if (hasNoInitialSelection) {
+    emptyOptionNode = (
+      <option value="" disabled hidden style={{ display: 'none' }}>&nbsp;</option>
+    );
+  }
+
+  // React HTML input can not have both value and defaultValue properties.
+  // https://reactjs.org/docs/uncontrolled-components.html#default-values
+  let selectDefaultValue;
+  if (!value) {
+    selectDefaultValue = defaultValue || '';
+  }
 
   return (
     <EuiFormControlLayout
@@ -43,11 +60,18 @@ export const EuiSelect = ({
           name={name}
           className={classes}
           ref={inputRef}
+          defaultValue={selectDefaultValue}
+          value={value}
           {...rest}
         >
-          {options.map((option, index) => (
-            <option value={option.value} key={index}>{option.text}</option>
-          ))}
+          {emptyOptionNode}
+          {options.map((option, index) => {
+            const {
+              text,
+              ...rest
+            } = option;
+            return <option {...rest} key={index}>{text}</option>;
+          })}
         </select>
       </EuiValidatableControl>
     </EuiFormControlLayout>
@@ -58,12 +82,16 @@ EuiSelect.propTypes = {
   name: PropTypes.string,
   id: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.shape({
-    value: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
+    text: PropTypes.node.isRequired
   })).isRequired,
   isInvalid: PropTypes.bool,
   fullWidth: PropTypes.bool,
   isLoading: PropTypes.bool,
+
+  /**
+   * Simulates no selection by creating an empty, selected, hidden first option
+   */
+  hasNoInitialSelection: PropTypes.bool,
   inputRef: PropTypes.func,
 };
 
@@ -71,4 +99,5 @@ EuiSelect.defaultProps = {
   options: [],
   fullWidth: false,
   isLoading: false,
+  hasNoInitialSelection: false,
 };

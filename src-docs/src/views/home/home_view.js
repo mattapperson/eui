@@ -1,263 +1,179 @@
 import React from 'react';
 
+import imageIcons from '../../images/icons.jpg';
+import imageButtons from '../../images/buttons.svg';
+import imageTables from '../../images/tables.svg';
+import imageForms from '../../images/forms.svg';
+import imageFlexgrid from '../../images/flexgrid.svg';
+import imageCards from '../../images/cards.svg';
+
 import {
-  EuiText,
-  EuiCode,
-  EuiFlexGroup,
+  Link,
+} from 'react-router';
+
+import {
+  EuiCard,
   EuiFlexGrid,
+  EuiFlexGroup,
   EuiFlexItem,
+  EuiIcon,
+  EuiLink,
   EuiSpacer,
-  EuiHorizontalRule,
+  EuiText,
+  EuiTitle,
+  EuiToolTip,
 } from '../../../../src/components';
 
 const pkg = require('../../../../package.json');
 
-const colors = [
-  {
-    color: 'euiColorPrimary',
-    hex: '#0079a5',
-  },
-  {
-    color: 'euiColorSecondary',
-    hex: '#00A69B',
-  },
-  {
-    color: 'euiColorAccent',
-    hex: '#DD0A73',
-  },
-  {
-    color: 'euiColorDanger',
-    hex: '#A30000',
-  },
-  {
-    color: 'euiColorWarning',
-    hex: '#E5830E',
-  },
-];
-
-const grays = [
-  {
-    color: 'euiColorEmptyShade',
-    hex: '#FFF',
-    textColor: '#222'
-  },
-  {
-    color: 'euiColorLightestShade',
-    hex: '#F5F5F5',
-    textColor: '#222'
-  },
-  {
-    color: 'euiColorLightShade',
-    hex: '#D9D9D9',
-    textColor: '#222'
-  },
-  {
-    color: 'euiColorMediumShade',
-    hex: '#999999',
-    textColor: '#FFF'
-  },
-  {
-    color: 'euiColorDarkShade',
-    hex: '#666666',
-    textColor: '#FFF'
-  },
-  {
-    color: 'euiColorDarkestShade',
-    hex: '#3F3F3F',
-    textColor: '#FFF'
-  },
-  {
-    color: 'euiColorFullShade',
-    hex: '#000000',
-    textColor: '#FFF'
-  },
-];
-
-const sizes = [
-  {
-    name: 'Extra small',
-    size: 4,
-  },
-  {
-    name: 'Small',
-    size: 8,
-  },
-  {
-    name: 'Medium',
-    size: 12,
-  },
-  {
-    name: 'default',
-    size: 16,
-  },
-  {
-    name: 'Large',
-    size: 24,
-  },
-  {
-    name: 'Extra large',
-    size: 32,
-  },
-  {
-    name: 'Extra extra large',
-    size: 40,
-  },
-];
-
-const fontSizes = [
-  {
-    name: 'Extra small',
-    size: 12,
-  },
-  {
-    name: 'Small',
-    size: 14,
-  },
-  {
-    name: 'Default',
-    size: 16,
-  },
-  {
-    name: 'Large',
-    size: 24,
-  },
-  {
-    name: 'Extra extra large',
-    size: 32,
-  },
-];
-
 export const HomeView = () => (
   <div className="guideSection__text">
-    <EuiText>
-      <h1>Elastic UI Framework</h1>
-      <p>Version: <strong>{ pkg.version }</strong></p>
-      <p>
-        Elastic UI teams use the UI Framework to build Kibana&rsquo;s user interface. Please see
-        the <a href="https://www.elastic.co/guide/en/kibana/current/index.html">general Kibana docs</a> for information on how to use Kibana, and
-        the <a href="https://www.elastic.co/guide/en/kibana/current/kibana-plugins.html">plugin-specific section</a> for
-        help developing Kibana plugins. You can find the source for the <a href="https://github.com/elastic/eui">Elastic UI Framework on GitHub</a>.
-      </p>
-
-      <h2>Goals</h2>
-      <p>EUI has the following primary goals..</p>
-      <ul>
-        <li><EuiCode>EUI is accessible to everyone</EuiCode>. Use high contrast,
-          color-blind safe palettes and proper aria labels.
-        </li>
-        <li><EuiCode>EUI is themable</EuiCode>. Theming should involve changing
-          less than a dozen lines of code. This means strict variable usage.
-        </li>
-        <li><EuiCode>EUI is responsive</EuiCode>. Currently we target
-          mobile, laptop, desktop and wide desktop breakpoints.
-        </li>
-        <li><EuiCode>EUI is playful</EuiCode>. Consistent use of animation can
-          bring life to our design.
-        </li>
-        <li><EuiCode>EUI is documented and has tests</EuiCode>. Make sure
-          the code is friendly to the novice and expert alike.
-        </li>
-      </ul>
-    </EuiText>
-
-    <EuiHorizontalRule />
-
-    <EuiFlexGroup>
+    <EuiFlexGroup alignItems="center">
       <EuiFlexItem>
-        <EuiText>
-          <h2>Colors</h2>
-          <p>
-            The UI Framework uses a very limited palette. Every color is
-            calculated using Sass color from one of the below.
-          </p>
-          <h3>Theming</h3>
-          <p>
-            Theming is achieved by overwriting these twelve colors with
-            a different set. This is why it is very important <EuiCode>never to use hex colors</EuiCode> in
-            EUI outside of the global variable files.
-          </p>
-          <h3>Accessibility</h3>
-          <p>
-            We aim to be at least AA compliant in our design. That means that only some of the colors
-            to the right should be used for text.
-          </p>
-        </EuiText>
+        <EuiTitle size="l">
+          <h1>Elastic UI framework</h1>
+        </EuiTitle>
       </EuiFlexItem>
-      <EuiFlexItem>
-        <EuiFlexGrid columns={2} gutterSize="s">
-          {colors.map((item, index) => {
-            return (
-              <EuiFlexItem className="guideDemo__color" style={{ background: item.hex }} key={index}>
-                <p>${item.color}</p>
-                <p className="guideDemo__colorHex">{item.hex}</p>
-              </EuiFlexItem>
-            );
-          })}
+      <EuiFlexItem grow={false}>
 
-          {grays.map((item, index) => {
-            return (
-              <EuiFlexItem className="guideDemo__color" style={{ background: item.hex, color: item.textColor }} key={index}>
-                <p>${item.color}</p>
-                <p className="guideDemo__colorHex">{item.hex}</p>
-              </EuiFlexItem>
-            );
-          })}
-        </EuiFlexGrid>
+        <EuiFlexGroup alignItems="center" gutterSize="s" responsive={false}>
+          <EuiFlexItem grow={false}>
+            <p>
+              Version:{' '}
+              <EuiLink href="#/package/changelog">
+                <strong>v{ pkg.version }</strong>
+              </EuiLink>
+            </p>
+          </EuiFlexItem>
+          <EuiFlexItem grow={false}>
+            <EuiLink href="https://github.com/elastic/eui">
+              <EuiIcon type="logoGithub" />
+            </EuiLink>
+          </EuiFlexItem>
+        </EuiFlexGroup>
       </EuiFlexItem>
+
+      <EuiFlexItem grow={false}>
+        <EuiFlexGroup alignItems="center" gutterSize="s" responsive={false}>
+          <EuiFlexItem grow={false}>
+            <EuiToolTip
+              title="Download zip"
+              postiion="down"
+              content="Import these sketch files into a new project as libraries.
+                This will provide symbols that match against their EUI component
+                counterparts."
+            >
+              <EuiLink href="https://github.com/elastic/eui/releases/download/v0.0.25/eui_sketch_0.0.25.zip">
+                <strong>Sketch libraries</strong>
+              </EuiLink>
+            </EuiToolTip>
+          </EuiFlexItem>
+          <EuiFlexItem grow={false}>
+            <EuiIcon type="logoSketch" />
+          </EuiFlexItem>
+        </EuiFlexGroup>
+      </EuiFlexItem>
+
     </EuiFlexGroup>
-
-    <EuiHorizontalRule />
-
-    <EuiText>
-      <h2>Spacing and sizing</h2>
+    <EuiSpacer />
+    <EuiText grow={false}>
       <p>
-        <EuiCode>EUI</EuiCode> is a minimalist design and as such needs to be very precise
-        with the spacing and padding between and around items. <EuiCode>16px</EuiCode> is our
-        magic number. It is our default font-size and our default spacing size.
-        Larger numbers can be used, but must always be
-        a <EuiCode>multiple of 16px</EuiCode> beyond these sizes below.
+        The Elastic UI framework (EUI) is a design library in use at Elastic to
+        build internal products that need to share our aesthetics.
+        It distributes UI React components and static assets for use
+        in building web layouts. Alongside the React components is a SASS/CSS
+        layer that can be used independently on its own.
+        If this is your first time using EUI you might want to read up on{' '}
+        <EuiLink href="https://github.com/elastic/eui/blob/master/wiki/consuming.md">how to consume EUI</EuiLink>{' '}
+        and <EuiLink href="https://www.elastic.co/guide/en/kibana/current/kibana-plugins.html">Kibana plugin development</EuiLink>{' '}
+        in general.
       </p>
-
-      <p>Sizing when passed as values to props should always be <EuiCode>xs / s / m / l / xl ...etc</EuiCode></p>
-
     </EuiText>
-
-    <EuiSpacer size="l" />
-
-    <EuiFlexGroup gutterSize="s" className="guideDemo__sizeGrid">
+    <EuiSpacer />
+    <EuiFlexGrid gutterSize="l" columns={3}>
       <EuiFlexItem>
-        <EuiText><h3>Element sizes / paddings / margins</h3></EuiText>
-        {sizes.map((item, index) => {
-          return (
-            <div key={index}>
-              <EuiSpacer size="m" />
-              <EuiFlexGroup key={index} alignItems="center">
-                <EuiFlexItem grow={false} style={{ width: 40, textAlign: 'right' }}>
-                  <div className="guideDemo__size" style={{ height: item.size, width: item.size }} />
-                </EuiFlexItem>
-                <EuiFlexItem>
-                  <p className="guideDemo__sizeText">
-                    {item.size}px - {item.name}
-                  </p>
-                </EuiFlexItem>
-              </EuiFlexGroup>
-            </div>
-          );
-        })}
+        <Link to="/display/icons">
+          <EuiCard
+            textAlign="left"
+            image={imageIcons}
+            isClickable
+            title="Icons"
+            description="Our SVG icon library gives you full control over size and color"
+          />
+        </Link>
       </EuiFlexItem>
       <EuiFlexItem>
-        <EuiText><h3>Font sizes</h3></EuiText>
-        {fontSizes.map((item, index) => {
-          return (
-            <div style={{ fontSize: item.size, marginTop: 24 }} key={index}>
-              {item.name} is {item.size}: Something about a lazy fox?
-            </div>
-          );
-        })}
+        <Link to="/navigation/button">
+          <EuiCard
+            textAlign="left"
+            image={imageButtons}
+            title="Buttons"
+            isClickable
+            description="Buttons for every usage you might need."
+          />
+        </Link>
       </EuiFlexItem>
-    </EuiFlexGroup>
-
-
-
+      <EuiFlexItem>
+        <Link to="/layout/flex">
+          <EuiCard
+            textAlign="left"
+            image={imageFlexgrid}
+            title="Flexible layouts"
+            description="Create layouts by using flex groups, grids and items"
+            isClickable
+          />
+        </Link>
+      </EuiFlexItem>
+      <EuiFlexItem>
+        <Link to="/display/tables">
+          <EuiCard
+            textAlign="left"
+            image={imageTables}
+            title="Tables"
+            isClickable
+            description="Build tables from individual components or high level wrappers"
+          />
+        </Link>
+      </EuiFlexItem>
+      <EuiFlexItem>
+        <Link to="/display/card">
+          <EuiCard
+            textAlign="left"
+            image={imageCards}
+            title="Cards"
+            description="Cards like these help you make repeatable content more presentable"
+            isClickable
+          />
+        </Link>
+      </EuiFlexItem>
+      <EuiFlexItem>
+        <Link to="/forms/form-layouts">
+          <EuiCard
+            textAlign="left"
+            image={imageForms}
+            title="Forms"
+            isClickable
+            description="Input tags, layouts and validation for your forms"
+          />
+        </Link>
+      </EuiFlexItem>
+    </EuiFlexGrid>
+    <EuiSpacer />
+    <EuiText grow={false}>
+      <h2>Design goals</h2>
+      <p>EUI has the following primary goals...</p>
+      <dl>
+        <dt>EUI is accessible to everyone.</dt>
+        <dd>Use high contrast, color-blind safe palettes and proper aria labels.</dd>
+        <dt>EUI is themable.</dt>
+        <dd>Theming should involve changingless than a dozen lines of code. This means strict variable usage.</dd>
+        <dt>EUI is responsive.</dt>
+        <dd>Currently we target mobile, laptop, desktop and wide desktop breakpoints.</dd>
+        <dt>EUI is playful.</dt>
+        <dd>Consistent use of animation can bring life to our design.</dd>
+        <dt>EUI is documented and has tests.</dt>
+        <dd>Make sure Make sure the code is friendly to the novice and expert alike.</dd>
+      </dl>
+    </EuiText>
   </div>
 );

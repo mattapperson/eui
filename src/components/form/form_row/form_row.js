@@ -30,7 +30,6 @@ export class EuiFormRow extends Component {
     const onChildFocus = get(this.props, 'children.props.onFocus');
     if (onChildFocus) {
       onChildFocus(...args);
-
     }
 
     this.setState({
@@ -60,6 +59,7 @@ export class EuiFormRow extends Component {
       hasEmptyLabelSpace,
       fullWidth,
       className,
+      describedByIds,
       ...rest
     } = this.props;
 
@@ -102,6 +102,7 @@ export class EuiFormRow extends Component {
         <EuiFormLabel
           isFocused={this.state.isFocused}
           isInvalid={isInvalid}
+          aria-invalid={isInvalid}
           htmlFor={id}
         >
           {label}
@@ -109,15 +110,17 @@ export class EuiFormRow extends Component {
       );
     }
 
-    const describingIds = [];
+    const optionalProps = {};
+    const describingIds = [...describedByIds];
+
     if (optionalHelpText) {
       describingIds.push(optionalHelpText.props.id);
     }
+
     if (optionalErrors) {
       optionalErrors.forEach(error => describingIds.push(error.props.id));
     }
 
-    const optionalProps = {};
     if (describingIds.length > 0) {
       optionalProps[`aria-describedby`] = describingIds.join(` `);
     }
@@ -150,13 +153,18 @@ EuiFormRow.propTypes = {
   label: PropTypes.node,
   id: PropTypes.string,
   isInvalid: PropTypes.bool,
-  error: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
+  error: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
   helpText: PropTypes.node,
   hasEmptyLabelSpace: PropTypes.bool,
   fullWidth: PropTypes.bool,
+  /**
+   * IDs of additional elements that should be part of children's `aria-describedby`
+   */
+  describedByIds: PropTypes.array,
 };
 
 EuiFormRow.defaultProps = {
   hasEmptyLabelSpace: false,
   fullWidth: false,
+  describedByIds: [],
 };

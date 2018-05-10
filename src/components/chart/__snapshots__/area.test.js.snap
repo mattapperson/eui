@@ -51,6 +51,10 @@ exports[`EuiArea all props are rendered 1`] = `
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
+            onTouchCancel={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
             onWheel={[Function]}
             width={600}
           >
@@ -391,7 +395,7 @@ exports[`EuiArea all props are rendered 1`] = `
                     ]
                   }
                 >
-                  <Component
+                  <Motion
                     defaultStyle={
                       Object {
                         "i": 0,
@@ -590,7 +594,7 @@ exports[`EuiArea all props are rendered 1`] = `
                         />
                       </g>
                     </GridLines>
-                  </Component>
+                  </Motion>
                 </Animation>
               </GridLines>
             </HorizontalGridLines>
@@ -933,7 +937,7 @@ exports[`EuiArea all props are rendered 1`] = `
                     ]
                   }
                 >
-                  <Component
+                  <Motion
                     defaultStyle={
                       Object {
                         "i": 0,
@@ -1469,7 +1473,7 @@ exports[`EuiArea all props are rendered 1`] = `
                         </AxisTicks>
                       </g>
                     </Axis>
-                  </Component>
+                  </Motion>
                 </Animation>
               </Axis>
             </XAxis>
@@ -1812,7 +1816,7 @@ exports[`EuiArea all props are rendered 1`] = `
                     ]
                   }
                 >
-                  <Component
+                  <Motion
                     defaultStyle={
                       Object {
                         "i": 0,
@@ -2204,7 +2208,7 @@ exports[`EuiArea all props are rendered 1`] = `
                         </AxisTicks>
                       </g>
                     </Axis>
-                  </Component>
+                  </Motion>
                 </Animation>
               </Axis>
             </YAxis>
@@ -2364,6 +2368,7 @@ exports[`EuiArea all props are rendered 1`] = `
                   _opacityValue={0.2}
                   angleDomain={Array []}
                   animation={true}
+                  className=""
                   clusters={
                     Set {
                       undefined,
@@ -2443,6 +2448,7 @@ exports[`EuiArea all props are rendered 1`] = `
                       10,
                     ]
                   }
+                  stack={false}
                   strokeDomain={Array []}
                   strokeRange={
                     Array [
@@ -2450,6 +2456,7 @@ exports[`EuiArea all props are rendered 1`] = `
                       "#FF9833",
                     ]
                   }
+                  style={Object {}}
                   xDomain={
                     Array [
                       0,
@@ -2535,6 +2542,7 @@ exports[`EuiArea all props are rendered 1`] = `
                       ]
                     }
                     animation={true}
+                    className=""
                     clusters={
                       Set {
                         undefined,
@@ -2613,6 +2621,7 @@ exports[`EuiArea all props are rendered 1`] = `
                         10,
                       ]
                     }
+                    stack={false}
                     strokeDomain={Array []}
                     strokeRange={
                       Array [
@@ -2620,6 +2629,7 @@ exports[`EuiArea all props are rendered 1`] = `
                         "#FF9833",
                       ]
                     }
+                    style={Object {}}
                     xDomain={
                       Array [
                         0,
@@ -2646,7 +2656,7 @@ exports[`EuiArea all props are rendered 1`] = `
                       ]
                     }
                   >
-                    <Component
+                    <Motion
                       defaultStyle={
                         Object {
                           "i": 0,
@@ -2687,6 +2697,7 @@ exports[`EuiArea all props are rendered 1`] = `
                         _opacityValue={0.2}
                         angleDomain={Array []}
                         animation={null}
+                        className=""
                         clusters={
                           Set {
                             undefined,
@@ -2765,6 +2776,7 @@ exports[`EuiArea all props are rendered 1`] = `
                             10,
                           ]
                         }
+                        stack={false}
                         strokeDomain={Array []}
                         strokeRange={
                           Array [
@@ -2772,6 +2784,7 @@ exports[`EuiArea all props are rendered 1`] = `
                             "#FF9833",
                           ]
                         }
+                        style={Object {}}
                         xDomain={
                           Array [
                             0,
@@ -2799,7 +2812,7 @@ exports[`EuiArea all props are rendered 1`] = `
                         }
                       >
                         <path
-                          className="rv-xy-plot__series rv-xy-plot__series--line undefined"
+                          className="rv-xy-plot__series rv-xy-plot__series--line "
                           d="M0,196L596,0L596,196L0,196Z"
                           onClick={[Function]}
                           onContextMenu={[Function]}
@@ -2815,7 +2828,7 @@ exports[`EuiArea all props are rendered 1`] = `
                           transform="translate(2,2)"
                         />
                       </AreaSeries>
-                    </Component>
+                    </Motion>
                   </Animation>
                 </AreaSeries>
                 <EUILineSeries
@@ -3049,6 +3062,7 @@ exports[`EuiArea all props are rendered 1`] = `
                           10,
                         ]
                       }
+                      stack={false}
                       strokeDomain={Array []}
                       strokeRange={
                         Array [
@@ -3222,6 +3236,7 @@ exports[`EuiArea all props are rendered 1`] = `
                             10,
                           ]
                         }
+                        stack={false}
                         strokeDomain={Array []}
                         strokeRange={
                           Array [
@@ -3261,7 +3276,7 @@ exports[`EuiArea all props are rendered 1`] = `
                           ]
                         }
                       >
-                        <Component
+                        <Motion
                           defaultStyle={
                             Object {
                               "i": 0,
@@ -3377,6 +3392,7 @@ exports[`EuiArea all props are rendered 1`] = `
                                 10,
                               ]
                             }
+                            stack={false}
                             strokeDomain={Array []}
                             strokeRange={
                               Array [
@@ -3434,7 +3450,7 @@ exports[`EuiArea all props are rendered 1`] = `
                               transform="translate(2,2)"
                             />
                           </LineSeries>
-                        </Component>
+                        </Motion>
                       </Animation>
                     </LineSeries>
                     <LineSeries
@@ -3533,6 +3549,7 @@ exports[`EuiArea all props are rendered 1`] = `
                           10,
                         ]
                       }
+                      stack={false}
                       strokeDomain={Array []}
                       strokeRange={
                         Array [
@@ -3706,6 +3723,7 @@ exports[`EuiArea all props are rendered 1`] = `
                             10,
                           ]
                         }
+                        stack={false}
                         strokeDomain={Array []}
                         strokeRange={
                           Array [
@@ -3745,7 +3763,7 @@ exports[`EuiArea all props are rendered 1`] = `
                           ]
                         }
                       >
-                        <Component
+                        <Motion
                           defaultStyle={
                             Object {
                               "i": 0,
@@ -3861,6 +3879,7 @@ exports[`EuiArea all props are rendered 1`] = `
                                 10,
                               ]
                             }
+                            stack={false}
                             strokeDomain={Array []}
                             strokeRange={
                               Array [
@@ -3918,7 +3937,7 @@ exports[`EuiArea all props are rendered 1`] = `
                               transform="translate(2,2)"
                             />
                           </LineSeries>
-                        </Component>
+                        </Motion>
                       </Animation>
                     </LineSeries>
                     <MarkSeries
@@ -4224,7 +4243,7 @@ exports[`EuiArea all props are rendered 1`] = `
                           ]
                         }
                       >
-                        <Component
+                        <Motion
                           defaultStyle={
                             Object {
                               "i": 0,
@@ -4418,7 +4437,7 @@ exports[`EuiArea all props are rendered 1`] = `
                               />
                             </g>
                           </MarkSeries>
-                        </Component>
+                        </Motion>
                       </Animation>
                     </MarkSeries>
                   </g>
@@ -4595,6 +4614,10 @@ exports[`EuiArea is rendered 1`] = `
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
+            onTouchCancel={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
             onWheel={[Function]}
             width={600}
           >
@@ -4935,7 +4958,7 @@ exports[`EuiArea is rendered 1`] = `
                     ]
                   }
                 >
-                  <Component
+                  <Motion
                     defaultStyle={
                       Object {
                         "i": 0,
@@ -5134,7 +5157,7 @@ exports[`EuiArea is rendered 1`] = `
                         />
                       </g>
                     </GridLines>
-                  </Component>
+                  </Motion>
                 </Animation>
               </GridLines>
             </HorizontalGridLines>
@@ -5477,7 +5500,7 @@ exports[`EuiArea is rendered 1`] = `
                     ]
                   }
                 >
-                  <Component
+                  <Motion
                     defaultStyle={
                       Object {
                         "i": 0,
@@ -6013,7 +6036,7 @@ exports[`EuiArea is rendered 1`] = `
                         </AxisTicks>
                       </g>
                     </Axis>
-                  </Component>
+                  </Motion>
                 </Animation>
               </Axis>
             </XAxis>
@@ -6356,7 +6379,7 @@ exports[`EuiArea is rendered 1`] = `
                     ]
                   }
                 >
-                  <Component
+                  <Motion
                     defaultStyle={
                       Object {
                         "i": 0,
@@ -6748,7 +6771,7 @@ exports[`EuiArea is rendered 1`] = `
                         </AxisTicks>
                       </g>
                     </Axis>
-                  </Component>
+                  </Motion>
                 </Animation>
               </Axis>
             </YAxis>
@@ -6904,6 +6927,7 @@ exports[`EuiArea is rendered 1`] = `
                   _opacityValue={0.2}
                   angleDomain={Array []}
                   animation={true}
+                  className=""
                   clusters={
                     Set {
                       undefined,
@@ -6980,6 +7004,7 @@ exports[`EuiArea is rendered 1`] = `
                       10,
                     ]
                   }
+                  stack={false}
                   strokeDomain={Array []}
                   strokeRange={
                     Array [
@@ -6987,6 +7012,7 @@ exports[`EuiArea is rendered 1`] = `
                       "#FF9833",
                     ]
                   }
+                  style={Object {}}
                   xDomain={
                     Array [
                       0,
@@ -7072,6 +7098,7 @@ exports[`EuiArea is rendered 1`] = `
                       ]
                     }
                     animation={true}
+                    className=""
                     clusters={
                       Set {
                         undefined,
@@ -7147,6 +7174,7 @@ exports[`EuiArea is rendered 1`] = `
                         10,
                       ]
                     }
+                    stack={false}
                     strokeDomain={Array []}
                     strokeRange={
                       Array [
@@ -7154,6 +7182,7 @@ exports[`EuiArea is rendered 1`] = `
                         "#FF9833",
                       ]
                     }
+                    style={Object {}}
                     xDomain={
                       Array [
                         0,
@@ -7180,7 +7209,7 @@ exports[`EuiArea is rendered 1`] = `
                       ]
                     }
                   >
-                    <Component
+                    <Motion
                       defaultStyle={
                         Object {
                           "i": 0,
@@ -7221,6 +7250,7 @@ exports[`EuiArea is rendered 1`] = `
                         _opacityValue={0.2}
                         angleDomain={Array []}
                         animation={null}
+                        className=""
                         clusters={
                           Set {
                             undefined,
@@ -7296,6 +7326,7 @@ exports[`EuiArea is rendered 1`] = `
                             10,
                           ]
                         }
+                        stack={false}
                         strokeDomain={Array []}
                         strokeRange={
                           Array [
@@ -7303,6 +7334,7 @@ exports[`EuiArea is rendered 1`] = `
                             "#FF9833",
                           ]
                         }
+                        style={Object {}}
                         xDomain={
                           Array [
                             0,
@@ -7330,7 +7362,7 @@ exports[`EuiArea is rendered 1`] = `
                         }
                       >
                         <path
-                          className="rv-xy-plot__series rv-xy-plot__series--line undefined"
+                          className="rv-xy-plot__series rv-xy-plot__series--line "
                           d="M0,196L596,0L596,196L0,196Z"
                           onClick={[Function]}
                           onContextMenu={[Function]}
@@ -7346,7 +7378,7 @@ exports[`EuiArea is rendered 1`] = `
                           transform="translate(2,2)"
                         />
                       </AreaSeries>
-                    </Component>
+                    </Motion>
                   </Animation>
                 </AreaSeries>
                 <EUILineSeries
@@ -7576,6 +7608,7 @@ exports[`EuiArea is rendered 1`] = `
                           10,
                         ]
                       }
+                      stack={false}
                       strokeDomain={Array []}
                       strokeRange={
                         Array [
@@ -7748,6 +7781,7 @@ exports[`EuiArea is rendered 1`] = `
                             10,
                           ]
                         }
+                        stack={false}
                         strokeDomain={Array []}
                         strokeRange={
                           Array [
@@ -7787,7 +7821,7 @@ exports[`EuiArea is rendered 1`] = `
                           ]
                         }
                       >
-                        <Component
+                        <Motion
                           defaultStyle={
                             Object {
                               "i": 0,
@@ -7902,6 +7936,7 @@ exports[`EuiArea is rendered 1`] = `
                                 10,
                               ]
                             }
+                            stack={false}
                             strokeDomain={Array []}
                             strokeRange={
                               Array [
@@ -7959,7 +7994,7 @@ exports[`EuiArea is rendered 1`] = `
                               transform="translate(2,2)"
                             />
                           </LineSeries>
-                        </Component>
+                        </Motion>
                       </Animation>
                     </LineSeries>
                     <LineSeries
@@ -8058,6 +8093,7 @@ exports[`EuiArea is rendered 1`] = `
                           10,
                         ]
                       }
+                      stack={false}
                       strokeDomain={Array []}
                       strokeRange={
                         Array [
@@ -8231,6 +8267,7 @@ exports[`EuiArea is rendered 1`] = `
                             10,
                           ]
                         }
+                        stack={false}
                         strokeDomain={Array []}
                         strokeRange={
                           Array [
@@ -8270,7 +8307,7 @@ exports[`EuiArea is rendered 1`] = `
                           ]
                         }
                       >
-                        <Component
+                        <Motion
                           defaultStyle={
                             Object {
                               "i": 0,
@@ -8386,6 +8423,7 @@ exports[`EuiArea is rendered 1`] = `
                                 10,
                               ]
                             }
+                            stack={false}
                             strokeDomain={Array []}
                             strokeRange={
                               Array [
@@ -8443,7 +8481,7 @@ exports[`EuiArea is rendered 1`] = `
                               transform="translate(2,2)"
                             />
                           </LineSeries>
-                        </Component>
+                        </Motion>
                       </Animation>
                     </LineSeries>
                     <MarkSeries
@@ -8747,7 +8785,7 @@ exports[`EuiArea is rendered 1`] = `
                           ]
                         }
                       >
-                        <Component
+                        <Motion
                           defaultStyle={
                             Object {
                               "i": 0,
@@ -8940,7 +8978,7 @@ exports[`EuiArea is rendered 1`] = `
                               />
                             </g>
                           </MarkSeries>
-                        </Component>
+                        </Motion>
                       </Animation>
                     </MarkSeries>
                   </g>

@@ -8,6 +8,7 @@ import {
 
 import {
   EuiCode,
+  EuiDescriptionList,
 } from '../../../../src/components';
 
 import DescriptionList from './description_list';
@@ -27,9 +28,8 @@ const descriptionListInlineSource = require('!!raw-loader!./description_list_inl
 const descriptionListInlineHtml = renderToHtml(DescriptionListInline);
 
 export const DescriptionListExample = {
-  title: 'DescriptionList',
+  title: 'Description List',
   sections: [{
-    title: 'DescriptionList',
     source: [{
       type: GuideSectionTypes.JS,
       code: descriptionListSource,
@@ -46,9 +46,10 @@ export const DescriptionListExample = {
         components separately to build a list manually.
       </p>
     ),
+    props: { EuiDescriptionList },
     demo: <DescriptionList />,
   }, {
-    title: 'DescriptionList as columns',
+    title: 'As columns',
     source: [{
       type: GuideSectionTypes.JS,
       code: descriptionListColumnSource,
@@ -64,7 +65,7 @@ export const DescriptionListExample = {
     ),
     demo: <DescriptionListColumn />,
   }, {
-    title: 'Description lists can be inline',
+    title: 'Inline',
     source: [{
       type: GuideSectionTypes.JS,
       code: descriptionListInlineSource,
@@ -81,7 +82,7 @@ export const DescriptionListExample = {
     ),
     demo: <DescriptionListInline />,
   }, {
-    title: 'DescriptionLists can be centered and compressed',
+    title: 'Centered and compressed',
     source: [{
       type: GuideSectionTypes.JS,
       code: descriptionListStylingSource,

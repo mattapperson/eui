@@ -8,6 +8,7 @@ import {
 
 import {
   EuiCode,
+  EuiImage,
 } from '../../../../src/components';
 
 import Image from './image';
@@ -26,7 +27,6 @@ export const ImageExample = {
   title: 'Image',
   sections: [
     {
-      title: 'Image',
       source: [{
         type: GuideSectionTypes.JS,
         code: imageSource,
@@ -69,6 +69,7 @@ export const ImageExample = {
           </ul>
         </div>
       ),
+      props: { EuiImage },
       demo: <Image />,
     },
     {

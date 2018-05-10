@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import classNames from 'classnames';
+
+import {
+  EuiLoadingSpinner
+} from '../loading';
+
+import { getSecureRelForTarget } from '../../services';
 
 import {
   ICON_TYPES,
@@ -41,8 +46,17 @@ export const EuiButton = ({
   size,
   fill,
   isDisabled,
+  isLoading,
+  href,
+  target,
+  rel,
+  type,
+  buttonRef,
   ...rest
 }) => {
+
+  // If in the loading state, force disabled to true
+  isDisabled = isLoading ? true : isDisabled;
 
   const classes = classNames(
     'euiButton',
@@ -58,7 +72,14 @@ export const EuiButton = ({
   // Add an icon to the button if one exists.
   let buttonIcon;
 
-  if (iconType) {
+  if (isLoading) {
+    buttonIcon = (
+      <EuiLoadingSpinner
+        className="euiButton__spinner"
+        size="m"
+      />
+    );
+  } else if (iconType) {
     buttonIcon = (
       <EuiIcon
         className="euiButton__icon"
@@ -69,29 +90,78 @@ export const EuiButton = ({
     );
   }
 
-  return (
-    <button
-      disabled={isDisabled}
-      className={classes}
-      {...rest}
-    >
-      <span className="euiButton__content">
-        {buttonIcon}
-        <span>{children}</span>
-      </span>
-    </button>
-  );
+  if (href) {
+    const secureRel = getSecureRelForTarget(target, rel);
+
+    return (
+      <a
+        className={classes}
+        href={href}
+        target={target}
+        rel={secureRel}
+        ref={buttonRef}
+        {...rest}
+      >
+        <span className="euiButton__content">
+          {buttonIcon}
+          <span className="euiButton__text">{children}</span>
+        </span>
+      </a>
+    );
+  } else {
+    return (
+      <button
+        disabled={isDisabled}
+        className={classes}
+        type={type}
+        ref={buttonRef}
+        {...rest}
+      >
+        <span className="euiButton__content">
+          {buttonIcon}
+          <span className="euiButton__text">{children}</span>
+        </span>
+      </button>
+    );
+  }
 };
 
 EuiButton.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+
+  /**
+   * See EuiIcon
+   */
   iconType: PropTypes.oneOf(ICON_TYPES),
   iconSide: PropTypes.oneOf(ICON_SIDES),
+
+  /**
+   * Add more focus to an action
+   */
   fill: PropTypes.bool,
+
+  /**
+   * Define the color of the button
+   */
   color: PropTypes.oneOf(COLORS),
   size: PropTypes.oneOf(SIZES),
   isDisabled: PropTypes.bool,
+  href: PropTypes.string,
+  target: PropTypes.string,
+  rel: PropTypes.string,
+  onClick: PropTypes.func,
+
+  /**
+   * Adds/swaps for loading spinner & disables
+   */
+  isLoading: PropTypes.bool,
+
+  /**
+   * Standard HTML attribute
+   */
+  type: PropTypes.string,
+  buttonRef: PropTypes.func,
 };
 
 EuiButton.defaultProps = {

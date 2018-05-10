@@ -8,6 +8,7 @@ import {
 
 import {
   EuiCode,
+  EuiContextMenu,
 } from '../../../../src/components';
 
 import ContextMenu from './context_menu';
@@ -19,9 +20,8 @@ const singlePanelSource = require('!!raw-loader!./single_panel');
 const singlePanelHtml = renderToHtml(SinglePanel);
 
 export const ContextMenuExample = {
-  title: 'ContextMenu',
+  title: 'Context Menu',
   sections: [{
-    title: 'ContextMenu',
     source: [{
       type: GuideSectionTypes.JS,
       code: contextMenuSource,
@@ -36,9 +36,10 @@ export const ContextMenuExample = {
         which itself can be wrapped around any component (like a button in this example).
       </p>
     ),
+    props: { EuiContextMenu },
     demo: <ContextMenu />,
   }, {
-    title: `ContextMenu can have a single panel`,
+    title: `With single panel`,
     source: [{
       type: GuideSectionTypes.JS,
       code: singlePanelSource,

@@ -8,6 +8,7 @@ import {
 
 import {
   EuiCode,
+  EuiIcon,
 } from '../../../../src/components';
 
 import Icons from './icons';
@@ -17,6 +18,10 @@ const iconsHtml = renderToHtml(Icons);
 import Apps from './apps';
 const appsSource = require('!!raw-loader!./apps');
 const appsHtml = renderToHtml(Apps);
+
+import Ml from './ml';
+const mlSource = require('!!raw-loader!./ml');
+const mlHtml = renderToHtml(Ml);
 
 import Logos from './logos';
 const logosSource = require('!!raw-loader!./logos');
@@ -37,7 +42,6 @@ const accessibilityHtml = renderToHtml(Accessibility);
 export const IconExample = {
   title: 'Icons',
   sections: [{
-    title: 'Icons',
     source: [{
       type: GuideSectionTypes.JS,
       code: iconsSource,
@@ -49,7 +53,7 @@ export const IconExample = {
       <div>
         <p>
           <EuiCode>EuiIcon</EuiCode> can build out an icon from our SVG
-          icon library. Icons can be resized and recolored (through a
+          icon library. Icons are resized and recolored (through a
           CSS <EuiCode>Fill</EuiCode>) decleration.
         </p>
         <p>
@@ -67,6 +71,7 @@ export const IconExample = {
         </p>
       </div>
     ),
+    props: { EuiIcon },
     demo: <Icons />,
   }, {
     title: 'Apps',
@@ -84,6 +89,22 @@ export const IconExample = {
       </p>
     ),
     demo: <Apps />,
+  }, {
+    title: 'Machine learning icons',
+    source: [{
+      type: GuideSectionTypes.JS,
+      code: mlSource,
+    }, {
+      type: GuideSectionTypes.HTML,
+      code: mlHtml,
+    }],
+    text: (
+      <p>
+        ML has some specific icons for job creation.
+        Again, these are made for <EuiCode>32x32</EuiCode>.
+      </p>
+    ),
+    demo: <Ml />,
   }, {
     title: 'Logos',
     source: [{
@@ -126,7 +147,8 @@ export const IconExample = {
     }],
     text: (
       <p>
-        Use the <EuiCode>color</EuiCode> prop to assign a color for your icons.
+        Use the <EuiCode>color</EuiCode> prop to assign a color for your icons. It
+        can accept named colors from our pallete or a three or six color hex code.
         The default behavior is to inherit the text color as the SVG
         color <EuiCode>fill</EuiCode> property via <EuiCode>currentColor</EuiCode> in CSS.
       </p>
@@ -149,4 +171,3 @@ export const IconExample = {
     demo: <Accessibility />,
   }],
 };
-

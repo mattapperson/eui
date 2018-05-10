@@ -15,8 +15,8 @@
   }
 
   .guideRule__caption {
-    @include euiFontSizeXS;
-    max-height: $euiFontSizeXS * $euiLineHeight; /* 1 */
+    @include euiFontSizeS;
+    max-height: $euiFontSizeS * $euiLineHeight; /* 1 */
     overflow-y: visible; /* 1 */
   }
 
@@ -38,6 +38,16 @@
 
     .guideRule__caption {
       color: $euiColorDanger;
+    }
+  }
+
+  &.guideRule__example--frame {
+    .guideRule__example__panel {
+      padding: $euiSizeL;
+      background-color: $euiColorLightestShade;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
     }
   }
 }

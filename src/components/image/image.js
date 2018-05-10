@@ -32,12 +32,6 @@ const fullScreenIconColorMap = {
 };
 
 export class EuiImage extends Component {
-
-  static propTypes = {
-    children: PropTypes.node,
-    className: PropTypes.string,
-  }
-
   constructor(props) {
     super(props);
 
@@ -48,6 +42,8 @@ export class EuiImage extends Component {
 
   onKeyDown = event => {
     if (event.keyCode === keyCodes.ESCAPE) {
+      event.preventDefault();
+      event.stopPropagation();
       this.closeFullScreen();
     }
   };

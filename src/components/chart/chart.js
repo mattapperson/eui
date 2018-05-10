@@ -4,7 +4,7 @@ import { XYPlot, makeWidthFlexible, XAxis, YAxis, HorizontalGridLines, Crosshair
 import PropTypes from 'prop-types';
 import { getPlotValues } from './utils';
 import Highlight from './highlight';
-import { VISUALIZATION_COLORS } from '../../services/colors/visualization_colors';
+import { VISUALIZATION_COLORS } from '../../services';
 import StatusText from './status-text';
 
 export class InnerCustomPlot extends PureComponent {
@@ -17,10 +17,10 @@ export class InnerCustomPlot extends PureComponent {
     this.seriesItems = {};
   }
   state = {
-    crosshairValues: []
+    crosshairValues: [],
   };
 
-  _setXYPlotRef = ref => this._xyPlotRef = ref
+  _setXYPlotRef = ref => (this._xyPlotRef = ref);
 
   _onMouseLeave() {
     this.setState({ crosshairValues: [], lastCrosshairIndex: null });
@@ -38,7 +38,7 @@ export class InnerCustomPlot extends PureComponent {
       this.setState({
         crosshairValues: this._getAllSeriesDataAtIndex(index),
         lastCrosshairIndex: index,
-        lastIndexsX: innerX
+        lastIndexsX: innerX,
       });
     }
   };
@@ -74,7 +74,7 @@ export class InnerCustomPlot extends PureComponent {
       if (v) {
         return {
           value: v.y,
-          title: Object.keys(this.seriesItems)[i] || 'Other'
+          title: Object.keys(this.seriesItems)[i] || 'Other',
         };
       }
     });
@@ -112,7 +112,7 @@ export class InnerCustomPlot extends PureComponent {
       xTicks,
       showTooltips,
       onSelectEnd,
-      children
+      children,
     } = this.props;
     const plotValues = getPlotValues(this._getAllSeriesDataAtIndex(), width);
     let colorIterator = 0;
@@ -132,7 +132,10 @@ export class InnerCustomPlot extends PureComponent {
         height={height}
         margin={2}
       >
-        <HorizontalGridLines tickValues={this._getTicks(yTicks)} style={{ strokeDasharray: '5 5' }} />
+        <HorizontalGridLines
+          tickValues={this._getTicks(yTicks)}
+          style={{ strokeDasharray: '5 5' }}
+        />
 
         {showXAxis && (
           <XAxis
@@ -156,7 +159,7 @@ export class InnerCustomPlot extends PureComponent {
           const props = {
             registerSeriesDataCallback: this._registerSeriesDataCallback,
             onNearestX: this._onNearestX,
-            id: `chart-${i}`
+            id: `chart-${i}`,
           };
 
           if (plotValues) {
@@ -205,7 +208,7 @@ InnerCustomPlot.propTypes = {
   yAxisLocation: PropTypes.string,
   mode: PropTypes.string,
   showTooltips: PropTypes.bool,
-  errorText: PropTypes.string
+  errorText: PropTypes.string,
 };
 
 InnerCustomPlot.defaultProps = {
@@ -213,7 +216,7 @@ InnerCustomPlot.defaultProps = {
   showYAxis: true,
   showXAxis: true,
   showTooltips: true,
-  mode: 'linear'
+  mode: 'linear',
 };
 
 export default makeWidthFlexible(InnerCustomPlot);

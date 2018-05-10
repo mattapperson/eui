@@ -7,6 +7,9 @@ import {
 } from '../../components';
 
 import {
+  EuiButton,
+  EuiButtonEmpty,
+  EuiButtonIcon,
   EuiCode,
 } from '../../../../src/components';
 
@@ -34,10 +37,17 @@ import ButtonGhost from './button_ghost';
 const buttonGhostSource = require('!!raw-loader!./button_ghost');
 const buttonGhostHtml = renderToHtml(ButtonGhost);
 
+import ButtonAsLink from './button_as_link';
+const buttonAsLinkSource = require('!!raw-loader!./button_as_link');
+const buttonAsLinkHtml = renderToHtml(ButtonAsLink);
+
+import ButtonLoading from './button_loading';
+const buttonLoadingSource = require('!!raw-loader!./button_loading');
+const buttonLoadingHtml = renderToHtml(ButtonLoading);
+
 export const ButtonExample = {
   title: 'Button',
   sections: [{
-    title: 'Button',
     source: [{
       type: GuideSectionTypes.JS,
       code: buttonSource,
@@ -45,13 +55,24 @@ export const ButtonExample = {
       type: GuideSectionTypes.HTML,
       code: buttonHtml,
     }],
+    props: { EuiButton },
+    demo: <Button />,
+  }, {
+    title: 'Buttons can also be links',
+    source: [{
+      type: GuideSectionTypes.JS,
+      code: buttonAsLinkSource,
+    }, {
+      type: GuideSectionTypes.HTML,
+      code: buttonAsLinkHtml,
+    }],
     text: (
       <p>
-        Button <EuiCode>type</EuiCode> defines the color of the button.
-        <EuiCode>fill</EuiCode> can be optionally added to add more focus to an action.
+        Buttons will use an <EuiCode>{'<a>'}</EuiCode> tag
+        if there is a <EuiCode>href</EuiCode> prop present.
       </p>
     ),
-    demo: <Button />,
+    demo: <ButtonAsLink />,
   }, {
     title: 'Button with Icon',
     source: [{
@@ -70,6 +91,23 @@ export const ButtonExample = {
     ),
     demo: <ButtonWithIcon />,
   }, {
+    title: 'Loading state',
+    source: [{
+      type: GuideSectionTypes.JS,
+      code: buttonLoadingSource,
+    }, {
+      type: GuideSectionTypes.HTML,
+      code: buttonLoadingHtml,
+    }],
+    text: (
+      <p>
+        Setting the <EuiCode>isLoading</EuiCode> prop to true will add the loading spinner or
+        swap the existing icon for the loading spinner and set the button to disabled. It is good
+        practice to also rename the button to &quot;Loading&hellip;&quot;.
+      </p>
+    ),
+    demo: <ButtonLoading />,
+  }, {
     title: 'ButtonEmpty',
     source: [{
       type: GuideSectionTypes.JS,
@@ -85,6 +123,7 @@ export const ButtonExample = {
         the rest of the buttons.
       </p>
     ),
+    props: { EuiButtonEmpty },
     demo: <ButtonOption />,
   }, {
     title: 'Flush ButtonEmpty',
@@ -117,6 +156,7 @@ export const ButtonExample = {
         Button icons are buttons that only contain an icon (no text).
       </p>
     ),
+    props: { EuiButtonIcon },
     demo: <ButtonIcon />,
   }, {
     title: 'Ghost buttons for deep color backgrounds',

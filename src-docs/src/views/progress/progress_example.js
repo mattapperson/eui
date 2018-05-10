@@ -8,6 +8,7 @@ import {
 
 import {
   EuiCode,
+  EuiProgress,
 } from '../../../../src/components';
 
 import Progress from './progress';
@@ -29,7 +30,6 @@ const progressSizeColorHtml = renderToHtml(ProgressSizeColor);
 export const ProgressExample = {
   title: 'Progress',
   sections: [{
-    title: 'Progress',
     source: [{
       type: GuideSectionTypes.JS,
       code: progressSource,
@@ -46,6 +46,7 @@ export const ProgressExample = {
         always strech <EuiCode>100%</EuiCode> to its container.
       </p>
     ),
+    props: { EuiProgress },
     demo: <Progress />,
   }, {
     title: 'Progress with values',

@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EuiComboBox is rendered 1`] = `
+<div
+  aria-label="aria-label"
+  className="euiComboBox testClass1 testClass2"
+  data-test-subj="test subject string"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+>
+  <EuiComboBoxInput
+    autoSizeInputRef={[Function]}
+    hasSelectedOptions={false}
+    inputRef={[Function]}
+    isListOpen={false}
+    onChange={[Function]}
+    onClear={[Function]}
+    onClick={[Function]}
+    onClose={[Function]}
+    onFocus={[Function]}
+    onOpen={[Function]}
+    onRemoveOption={[Function]}
+    searchValue=""
+    selectedOptions={Array []}
+    singleSelection={false}
+    updatePosition={[Function]}
+    value=""
+  />
+</div>
+`;

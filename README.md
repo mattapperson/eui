@@ -1,6 +1,6 @@
 🚨 **WARNING** While open source, the intended consumers of this repository are Elastic products. Read the [FAQ][faq] for details.
 
-# Elastic UI Framework [![Build Status][ci-badge]][ci-site]
+# Elastic UI Framework
 
 > The Elastic UI Framework is a collection of React UI components for quickly building user interfaces
 > at Elastic. Not using React? No problem! You can still use the CSS behind each component.
@@ -15,12 +15,27 @@ To install the Elastic UI Framework, use the `npm` CLI.
 npm install @elastic/eui
 ```
 
-## Running locally
+## Running Locally
+
+### Node
+
+We depend upon the version of node defined in [.nvmrc](.nvmrc).
+
+You will probably want to install a node version manager. [nvm](https://github.com/creationix/nvm) is recommended.
+
+To install and use the correct node version with `nvm`:
+
+```
+nvm install
+```
+
+### Documentation
 
 You can run the documentation locally at [http://localhost:8030/](http://localhost:8030/) by running.
 
 ```
-npm start
+yarn
+yarn start
 ```
 
 ## Goals
@@ -37,6 +52,12 @@ You can find documentation around creating and submitting new components in [CON
 
 ## Wiki
 
+### Consumption
+
+* [Consuming EUI][consuming]
+
+### Maintenance
+
 * [Component design][component-design]
 * [Component development][component-development]
   * [Creating components manually][creating-components-manually]
@@ -51,6 +72,7 @@ You can find documentation around creating and submitting new components in [CON
 
 [license]: LICENSE.md
 [faq]: FAQ.md
+[consuming]: wiki/consuming.md
 [component-design]: wiki/component-design.md
 [component-development]: wiki/component-development.md
 [creating-components-manually]: wiki/creating-components-manually.md
@@ -59,5 +81,3 @@ You can find documentation around creating and submitting new components in [CON
 [testing]: wiki/testing.md
 [theming]: wiki/theming.md
 [docs]: https://elastic.github.io/eui/
-[ci-badge]: https://travis-ci.org/elastic/eui.svg?branch=master
-[ci-site]: https://travis-ci.org/elastic/eui

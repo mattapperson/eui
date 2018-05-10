@@ -8,6 +8,7 @@ import {
 
 import {
   EuiCode,
+  EuiErrorBoundary,
 } from '../../../../src/components';
 
 import ErrorBoundary from './error_boundary';
@@ -15,9 +16,8 @@ const errorBoundarySource = require('!!raw-loader!./error_boundary');
 const errorBoundaryHtml = renderToHtml(ErrorBoundary);
 
 export const ErrorBoundaryExample = {
-  title: 'ErrorBoundary',
+  title: 'Error Boundary',
   sections: [{
-    title: 'ErrorBoundary',
     source: [{
       type: GuideSectionTypes.JS,
       code: errorBoundarySource,
@@ -30,6 +30,7 @@ export const ErrorBoundaryExample = {
         Use <EuiCode>EuiErrorBoundary</EuiCode> to prevent errors from taking down the entire app.
       </p>
     ),
+    props: { EuiErrorBoundary },
     demo: <ErrorBoundary />,
   }],
 };

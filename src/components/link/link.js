@@ -1,5 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
+
+import { getSecureRelForTarget } from '../../services';
 
 const colorsToClassNameMap = {
   'primary': 'euiLink--primary',
@@ -15,40 +18,52 @@ export const COLORS = Object.keys(colorsToClassNameMap);
 
 export const EuiLink = ({
   children,
-  type,
   color,
   className,
-  onClick,
+  href,
+  target,
+  rel,
+  type,
   ...rest
 }) => {
   const classes = classNames('euiLink', colorsToClassNameMap[color], className);
 
-  let link;
-  if (onClick) {
-    link = (
+  if (href === undefined) {
+    return (
       <button
-        type={type}
         className={classes}
-        onClick={onClick}
+        type={type}
         {...rest}
       >
         {children}
       </button>
     );
-
-  } else {
-    link = (
-      <a
-        className={classes}
-        {...rest}
-      >
-        {children}
-      </a>
-    );
   }
+
+  const secureRel = getSecureRelForTarget(target, rel);
+
   return (
-    link
+    <a
+      className={classes}
+      href={href}
+      target={target}
+      rel={secureRel}
+      {...rest}
+    >
+      {children}
+    </a>
   );
+};
+
+EuiLink.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  href: PropTypes.string,
+  target: PropTypes.string,
+  rel: PropTypes.string,
+  onClick: PropTypes.func,
+  type: PropTypes.string,
+  color: PropTypes.oneOf(COLORS),
 };
 
 EuiLink.defaultProps = {

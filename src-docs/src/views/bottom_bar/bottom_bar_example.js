@@ -7,6 +7,7 @@ import {
 } from '../../components';
 
 import {
+  EuiBottomBar,
   EuiCode,
 } from '../../../../src/components';
 
@@ -15,9 +16,8 @@ const bottomBarSource = require('!!raw-loader!./bottom_bar');
 const bottomBarHtml = renderToHtml(BottomBar);
 
 export const BottomBarExample = {
-  title: 'BottomBar',
+  title: 'Bottom Bar',
   sections: [{
-    title: 'BottomBar',
     source: [{
       type: GuideSectionTypes.JS,
       code: bottomBarSource,
@@ -40,6 +40,7 @@ export const BottomBarExample = {
         </p>
       </div>
     ),
+    props: { EuiBottomBar },
     demo: <BottomBar />,
   }],
 };

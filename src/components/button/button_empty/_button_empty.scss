@@ -45,8 +45,11 @@
       fill: $euiButtonColorDisabled;
     }
 
+    &:focus {
+      background-color: transparent;
+    }
+
     &:hover, &:focus {
-      background-color: $euiColorEmptyShade;
       text-decoration: none;
     }
   }
@@ -71,16 +74,10 @@ $buttonTypes: (
     }
 
     &:focus {
-      @if ($name == 'text') {
-        background-color: transparentize($euiColorPrimary, .9);
-      } @else {
-        background-color: transparentize($color, .9);
-      }
+      background-color: transparentize($color, .9);
     }
 
     &:hover {
-      background-color: transparent;
-
       @if ($name == 'disabled') {
         cursor: not-allowed;
       }
@@ -89,15 +86,21 @@ $buttonTypes: (
 }
 
 .euiButtonEmpty--flushLeft {
+  margin-right: $euiSizeS;
+
   .euiButtonEmpty__content {
     border-left: none;
     padding-left: 0;
+    padding-right: 0;
   }
 }
 
 .euiButtonEmpty--flushRight {
+  margin-left: $euiSizeS;
+
   .euiButtonEmpty__content {
     border-right: none;
+    padding-left: 0;
     padding-right: 0;
   }
 }

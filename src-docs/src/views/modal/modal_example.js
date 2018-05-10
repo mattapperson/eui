@@ -8,6 +8,9 @@ import {
 
 import {
   EuiCode,
+  EuiModal,
+  EuiConfirmModal,
+  EuiOverlayMask,
 } from '../../../../src/components';
 
 import { Modal } from './modal';
@@ -18,10 +21,13 @@ import { ConfirmModal } from './confirm_modal';
 const confirmModalSource = require('!!raw-loader!./confirm_modal');
 const confirmModalHtml = renderToHtml(ConfirmModal);
 
+import { OverflowTest } from './overflow_test';
+const overflowTestSource = require('!!raw-loader!./overflow_test');
+const overflowTestHtml = renderToHtml(OverflowTest);
+
 export const ModalExample = {
   title: 'Modal',
   sections: [{
-    title: 'Modal',
     source: [{
       type: GuideSectionTypes.JS,
       code: modalSource,
@@ -35,9 +41,10 @@ export const ModalExample = {
         another UX within it.
       </p>
     ),
+    props: { EuiModal, EuiOverlayMask },
     demo: <Modal />,
   }, {
-    title: 'ConfirmModal',
+    title: 'Confirm Modal',
     source: [{
       type: GuideSectionTypes.JS,
       code: confirmModalSource,
@@ -47,10 +54,28 @@ export const ModalExample = {
     }],
     text: (
       <p>
-        Use the <EuiCode>EuiConfirmModal</EuiCode> to ask the user to confirm a decision,
-        typically one which is destructive and potentially regrettable.
+        Use the <EuiCode>EuiConfirmModal</EuiCode> to ask the user to confirm a decision.
+        The default type is a positive or neutral confirmation. To change the main button color
+        change the the <EuiCode>buttonColor</EuiCode> property to any of the button color options.
       </p>
     ),
+    props: { EuiConfirmModal },
     demo: <ConfirmModal />,
+  }, {
+    title: 'Overflow overflow test',
+    source: [{
+      type: GuideSectionTypes.JS,
+      code: overflowTestSource,
+    }, {
+      type: GuideSectionTypes.HTML,
+      code: overflowTestHtml,
+    }],
+    text: (
+      <p>
+          This demo is to test long overflowing body content.
+      </p>
+    ),
+    props: { EuiConfirmModal },
+    demo: <OverflowTest />,
   }],
 };

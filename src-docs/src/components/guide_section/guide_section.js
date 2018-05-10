@@ -1,23 +1,92 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { flatten } from 'lodash';
 
 import {
-  GuideSandboxChrome,
-} from '../guide_sandbox';
-
-import {
+  EuiCode,
   EuiCodeBlock,
   EuiErrorBoundary,
   EuiSpacer,
   EuiTab,
+  EuiTable,
+  EuiTableBody,
+  EuiTableHeader,
+  EuiTableHeaderCell,
+  EuiTableRow,
+  EuiTableRowCell,
   EuiTabs,
   EuiText,
+  EuiTextColor,
   EuiTitle,
+  EuiLink
 } from '../../../../src/components';
+
+function markup(text) {
+  const regex = /(#[a-zA-Z]+)|(`[^`]+`)/g;
+  return text.split(regex).map((token, index) => {
+    if (!token) {
+      return '';
+    }
+    if (token.startsWith('#')) {
+      const id = token.substring(1);
+      const onClick = () => {
+        document.getElementById(id).scrollIntoView();
+      };
+      return <EuiLink key={`markup-${index}`} onClick={onClick}>{id}</EuiLink>;
+    }
+    if (token.startsWith('`')) {
+      const code = token.substring(1, token.length - 1);
+      return <EuiCode key={`markup-${index}`}>{code}</EuiCode>;
+    }
+    return token;
+
+  });
+}
+
+const humanizeType = type => {
+  if (!type) {
+    return '';
+  }
+
+  let humanizedType;
+
+  switch (type.name) {
+    case 'enum':
+      if (Array.isArray(type.value)) {
+        humanizedType = type.value.map(({ value }) => value).join(', ');
+        break;
+      }
+      humanizedType = type.value;
+      break;
+
+    case 'union':
+      if (Array.isArray(type.value)) {
+        const unionValues = type.value.map(({ name }) => name);
+        unionValues[unionValues.length - 1] = `or ${unionValues[unionValues.length - 1]}`;
+
+        if (unionValues.length > 2) {
+          humanizedType = unionValues.join(', ');
+        } else {
+          humanizedType = unionValues.join(' ');
+        }
+        break;
+      }
+      humanizedType = type.value;
+      break;
+
+    default:
+      humanizedType = type.name;
+  }
+
+  return humanizedType;
+};
+
 
 export class GuideSection extends Component {
   constructor(props) {
     super(props);
+
+    this.componentNames = Object.keys(props.props);
 
     this.tabs = [{
       name: 'Demo',
@@ -29,25 +98,20 @@ export class GuideSection extends Component {
       isCode: true,
     }];
 
+    if (this.componentNames.length) {
+      this.tabs.push({
+        name: 'Props',
+      });
+    }
+
     this.state = {
       selectedTab: this.tabs[0],
-      sandbox: {
-        isChromeVisible: props.isSandbox ? false : undefined,
-      },
     };
   }
 
   onSelectedTabChanged = selectedTab => {
     this.setState({
       selectedTab,
-    });
-  }
-
-  onToggleSandboxChrome = () => {
-    this.setState({
-      sandbox: {
-        isChromeVisible: !this.state.sandbox.isChromeVisible,
-      },
     });
   }
 
@@ -63,34 +127,171 @@ export class GuideSection extends Component {
     ));
   }
 
-  renderChrome() {
-    let header;
+  renderText() {
+    const { text } = this.props;
 
-    if (this.props.isSandbox) {
-      header = (
-        <GuideSandboxChrome
-          routes={this.props.routes.getAppRoutes()}
-          onToggleTheme={this.props.toggleTheme}
-          onToggleSandboxChrome={this.onToggleSandboxChrome}
-          selectedTheme={this.props.theme}
-          isVisible={this.state.sandbox.isChromeVisible}
-        />
+    if (!text) {
+      return;
+    }
+
+    return [
+      <EuiText key="text">{text}</EuiText>,
+    ];
+  }
+
+  renderPropsForComponent = (componentName, component) => {
+    if (!component.__docgenInfo) {
+      return;
+    }
+
+    const docgenInfo = Array.isArray(component.__docgenInfo) ? component.__docgenInfo[0] : component.__docgenInfo;
+    const { _euiObjectType, description, props } = docgenInfo;
+
+    if (!props && !description) {
+      return;
+    }
+
+    const propNames = Object.keys(props);
+
+    const rows = propNames.map(propName => {
+      const {
+        description: propDescription,
+        required,
+        defaultValue,
+        type,
+      } = props[propName];
+
+      let humanizedName = (
+        <strong>{propName}</strong>
+      );
+
+      if (required) {
+        humanizedName = (
+          <span>
+            <strong>{humanizedName}</strong> <EuiTextColor color="danger">(required)</EuiTextColor>
+          </span>
+        );
+      }
+
+      const humanizedType = humanizeType(type);
+
+      const typeMarkup = markup(humanizedType);
+      const descriptionMarkup = markup(propDescription);
+      let defaultValueMarkup = '';
+      if (defaultValue) {
+        defaultValueMarkup = [ <EuiCode key={`defaultValue-${propName}`}>{defaultValue.value}</EuiCode> ];
+        if (defaultValue.comment) {
+          defaultValueMarkup.push(`(${defaultValue.comment})`);
+        }
+      }
+      const cells = [
+        (
+          <EuiTableRowCell key="name" header="Prop">
+            {humanizedName}
+          </EuiTableRowCell>
+        ), (
+          <EuiTableRowCell key="type" header="Type">
+            <EuiCode>{typeMarkup}</EuiCode>
+          </EuiTableRowCell>
+        ), (
+          <EuiTableRowCell key="defaultValue" header="Default" hideForMobile={!defaultValue}>
+            {defaultValueMarkup}
+          </EuiTableRowCell>
+        ), (
+          <EuiTableRowCell key="description" header="Note" isMobileFullWidth={true} hideForMobile={!propDescription}>
+            {descriptionMarkup}
+          </EuiTableRowCell>
+        )
+      ];
+
+      return (
+        <EuiTableRow key={propName}>
+          {cells}
+        </EuiTableRow>
+      );
+    });
+
+    const title = _euiObjectType === 'type' ?
+      <EuiCode id={componentName}>{componentName}</EuiCode> :
+      <EuiText>{componentName}</EuiText>;
+
+    let descriptionElement;
+
+    if (description) {
+      descriptionElement = (
+        <div key={`description-${componentName}`}>
+          <EuiText>
+            <p>{markup(description)}</p>
+          </EuiText>
+          <EuiSpacer size="m" key={`propsSpacer-${componentName}`} />
+        </div>
       );
     }
 
-    if (this.props.isSandbox && !this.state.sandbox.isChromeVisible) {
-      return header;
+    let table;
+
+    if (rows.length) {
+      table = (
+        <EuiTable className="guideSectionPropsTable" compressed key={`propsTable-${componentName}`}>
+          <EuiTableHeader>
+            <EuiTableHeaderCell>
+              Prop
+            </EuiTableHeaderCell>
+
+            <EuiTableHeaderCell>
+              Type
+            </EuiTableHeaderCell>
+
+            <EuiTableHeaderCell>
+              Default
+            </EuiTableHeaderCell>
+
+            <EuiTableHeaderCell>
+              Note
+            </EuiTableHeaderCell>
+          </EuiTableHeader>
+
+          <EuiTableBody>
+            {rows}
+          </EuiTableBody>
+        </EuiTable>
+      );
     }
 
-    return (
-      <div>
-        {header}
-        <div className="guideSection__text">
+    return [
+      <EuiSpacer size="m" key={`propsSpacer-${componentName}-1`} />,
+      <EuiTitle size="s" key={`propsName-${componentName}`}><h3>{title}</h3></EuiTitle>,
+      <EuiSpacer size="s" key={`propsSpacer-${componentName}-2`} />,
+      descriptionElement,
+      table,
+    ];
+  }
+
+  renderProps() {
+    const { props } = this.props;
+    return flatten(
+      this.componentNames.map(componentName => this.renderPropsForComponent(componentName, props[componentName]))
+    );
+  }
+
+  renderChrome() {
+    let title;
+
+    if (this.props.title) {
+      title = (
+        <Fragment>
           <EuiTitle>
             <h2>{this.props.title}</h2>
           </EuiTitle>
-          <EuiSpacer size="m" />
-          <EuiText>{this.props.text}</EuiText>
+          <EuiSpacer size="m" key="textSpacer" />
+        </Fragment>
+      );
+    }
+    return (
+      <div>
+        <div className="guideSection__text">
+          {title}
+          {this.renderText()}
         </div>
 
         <EuiSpacer size="m" />
@@ -109,7 +310,10 @@ export class GuideSection extends Component {
     };
 
     const codeClass = nameToCodeClassMap[name];
-    const source = this.props.source.find(sourceObject => sourceObject.type === name);
+    const { code } = this.props.source.find(sourceObject => sourceObject.type === name);
+    const npmImports = code
+      .replace(/(from )'(..\/)+src\/components(\/?';)/, `from '@elastic/eui';`)
+      .replace(/(from )'(..\/)+src\/services(\/?';)/, `from '@elastic/eui/services';`);
 
     return (
       <div key={name} ref={name}>
@@ -117,7 +321,7 @@ export class GuideSection extends Component {
           language={codeClass}
           overflowHeight={400}
         >
-          {source.code}
+          {npmImports}
         </EuiCodeBlock>
       </div>
     );
@@ -125,7 +329,19 @@ export class GuideSection extends Component {
 
   renderContent() {
     if (this.state.selectedTab.isCode) {
-      return this.renderCode(this.state.selectedTab.name);
+      return (
+        <EuiErrorBoundary>
+          {this.renderCode(this.state.selectedTab.name)}
+        </EuiErrorBoundary>
+      );
+    }
+
+    if (this.state.selectedTab.name === 'Props') {
+      return (
+        <EuiErrorBoundary>
+          {this.renderProps()}
+        </EuiErrorBoundary>
+      );
     }
 
     return (
@@ -155,8 +371,12 @@ GuideSection.propTypes = {
   id: PropTypes.string,
   source: PropTypes.array,
   children: PropTypes.any,
-  isSandbox: PropTypes.bool,
   toggleTheme: PropTypes.func.isRequired,
   theme: PropTypes.string.isRequired,
   routes: PropTypes.object.isRequired,
+  props: PropTypes.object,
+};
+
+GuideSection.defaultProps = {
+  props: {},
 };

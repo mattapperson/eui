@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'enzyme';
+import { render, mount } from 'enzyme';
 import { requiredProps } from '../../test/required_props';
 
 import {
@@ -37,6 +37,17 @@ describe('EuiButton', () => {
       it('is rendered', () => {
         const component = render(
           <EuiButton isDisabled />
+        );
+
+        expect(component)
+          .toMatchSnapshot();
+      });
+    });
+
+    describe('isLoading', () => {
+      it('is rendered', () => {
+        const component = render(
+          <EuiButton isLoading />
         );
 
         expect(component)
@@ -93,6 +104,37 @@ describe('EuiButton', () => {
           expect(component)
             .toMatchSnapshot();
         });
+      });
+    });
+
+    describe('href', () => {
+      it('secures the rel attribute when the target is _blank', () => {
+        const component = render(
+          <EuiButton href="#" target="_blank" />
+        );
+
+        expect(component)
+          .toMatchSnapshot();
+      });
+    });
+
+    describe('onClick', () => {
+      it('supports onClick and href', () => {
+        const handler = jest.fn();
+        const component = mount(
+          <EuiButton href="#" onClick={handler} />
+        );
+        component.find('a').simulate('click');
+        expect(handler.mock.calls.length).toEqual(1);
+      });
+
+      it('supports onClick as a button', () => {
+        const handler = jest.fn();
+        const component = mount(
+          <EuiButton onClick={handler} />
+        );
+        component.find('button').simulate('click');
+        expect(handler.mock.calls.length).toEqual(1);
       });
     });
   });

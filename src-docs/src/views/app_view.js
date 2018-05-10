@@ -13,9 +13,6 @@ import {
   EuiErrorBoundary,
   EuiPage,
   EuiPageBody,
-  EuiPageContent,
-  EuiPageContentBody,
-  EuiPageSideBar,
 } from '../../../src/components';
 
 import { keyCodes } from '../../../src/services';
@@ -25,84 +22,53 @@ export class AppView extends Component {
     applyTheme(this.props.theme);
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     this.updateTheme();
+
+    if (prevProps.currentRoute.path !== this.props.currentRoute.path) {
+      window.scrollTo(0, 0);
+    }
   }
 
   componentDidMount() {
-    const {
-      routes,
-    } = this.props;
-
     this.updateTheme();
 
-    document.addEventListener('keydown', e => {
-      if (e.target !== document.body) {
-        return;
-      }
+    document.addEventListener('keydown', this.onKeydown);
+  }
 
-      let route;
-
-      switch (e.keyCode) {
-        case keyCodes.LEFT:
-          route = routes.getPreviousRoute(this.props.currentRoute.name);
-          break;
-        case keyCodes.RIGHT:
-          route = routes.getNextRoute(this.props.currentRoute.name);
-          break;
-        default:
-          break;
-      }
-
-      if (route) {
-        routes.history.push(route.path);
-      }
-    });
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.onKeydown);
   }
 
   renderContent() {
     const {
       children,
       currentRoute,
-      isSandbox,
       toggleTheme,
       theme,
       routes,
     } = this.props;
 
-    if (isSandbox) {
-      return (
-        <div className="guideSandbox">
-          {children}
-        </div>
-      );
-    } else {
-      return (
-        <EuiPage>
-          <EuiPageBody>
-            <EuiErrorBoundary>
-              <EuiPageSideBar>
-                <GuidePageChrome
-                  currentRouteName={currentRoute.name}
-                  onToggleTheme={toggleTheme}
-                  selectedTheme={theme}
-                  guidelines={routes.guidelines}
-                  components={routes.components}
-                  patterns={routes.patterns}
-                  sandboxes={routes.sandboxes}
-                />
-              </EuiPageSideBar>
-            </EuiErrorBoundary>
+    const { navigation } = routes;
 
-            <EuiPageContent>
-              <EuiPageContentBody>
-                {children}
-              </EuiPageContentBody>
-            </EuiPageContent>
-          </EuiPageBody>
-        </EuiPage>
-      );
-    }
+    return (
+      <EuiPage className="guidePage">
+        <EuiPageBody>
+          <EuiErrorBoundary>
+            <GuidePageChrome
+              currentRouteName={currentRoute.name}
+              onToggleTheme={toggleTheme}
+              selectedTheme={theme}
+              navigation={navigation}
+            />
+          </EuiErrorBoundary>
+
+          <div className="guidePageContent">
+            {children}
+          </div>
+        </EuiPageBody>
+      </EuiPage>
+    );
   }
 
   render() {
@@ -112,12 +78,43 @@ export class AppView extends Component {
       </div>
     );
   }
+
+  onKeydown = e => {
+    if (e.target !== document.body) {
+      return;
+    }
+
+    if (e.metaKey) {
+      return;
+    }
+
+    const {
+      routes,
+      currentRoute,
+    } = this.props;
+
+    if (e.keyCode === keyCodes.LEFT) {
+      pushRoute(routes.getPreviousRoute);
+      return;
+    }
+
+    if (e.keyCode === keyCodes.RIGHT) {
+      pushRoute(routes.getNextRoute);
+    }
+
+    function pushRoute(getRoute) {
+      const route = getRoute(currentRoute.name);
+
+      if (route) {
+        routes.history.push(route.path);
+      }
+    }
+  }
 }
 
 AppView.propTypes = {
   children: PropTypes.any,
   currentRoute: PropTypes.object.isRequired,
-  isSandbox: PropTypes.bool,
   theme: PropTypes.string.isRequired,
   toggleTheme: PropTypes.func.isRequired,
   routes: PropTypes.object.isRequired,

@@ -23,7 +23,12 @@ export {
 
 export {
   EuiBadge,
+  EuiBetaBadge,
 } from './badge';
+
+export {
+  EuiCard,
+} from './card';
 
 export {
   EuiCallOut,
@@ -39,11 +44,20 @@ export {
 export {
   EuiCode,
   EuiCodeBlock,
+  EuiCodeBlockImpl,
 } from './code';
 
 export {
   EuiCodeEditor,
 } from './code_editor';
+
+export {
+  EuiColorPicker,
+} from './color_picker';
+
+export {
+  EuiComboBox,
+} from './combo_box';
 
 export {
   EuiContextMenu,
@@ -52,10 +66,22 @@ export {
 } from './context_menu';
 
 export {
+  EuiDatePicker,
+} from './date_picker';
+
+export {
+  EuiDelayHide
+} from './delay_hide';
+
+export {
   EuiDescriptionList,
   EuiDescriptionListTitle,
   EuiDescriptionListDescription,
 } from './description_list';
+
+export {
+  EuiEmptyPrompt,
+} from './empty_prompt';
 
 export {
   EuiErrorBoundary,
@@ -65,6 +91,12 @@ export {
   EuiExpression,
   EuiExpressionButton,
 } from './expression';
+
+export {
+  EuiFilterButton,
+  EuiFilterGroup,
+  EuiFilterSelectItem
+} from './filter_group';
 
 export {
   EuiFlexGroup,
@@ -82,10 +114,12 @@ export {
 export {
   EuiCheckbox,
   EuiCheckboxGroup,
+  EuiDescribedFormGroup,
   EuiFieldNumber,
   EuiFieldPassword,
   EuiFieldSearch,
   EuiFieldText,
+  EuiFilePicker,
   EuiForm,
   EuiFormControlLayout,
   EuiFormErrorText,
@@ -101,7 +135,6 @@ export {
   EuiValidatableControl,
 } from './form';
 
-
 export {
   EuiHeader,
   EuiHeaderAlert,
@@ -109,6 +142,7 @@ export {
   EuiHeaderBreadcrumbCollapsed,
   EuiHeaderBreadcrumbs,
   EuiHeaderLogo,
+  EuiHeaderNotification,
   EuiHeaderSection,
   EuiHeaderSectionItem,
   EuiHeaderSectionItemButton,
@@ -117,6 +151,10 @@ export {
 export {
   EuiHealth,
 } from './health';
+
+export {
+  EuiHighlight,
+} from './highlight';
 
 export {
   EuiHorizontalRule,
@@ -159,12 +197,12 @@ export {
 } from './modal';
 
 export {
-  EuiOverlayMask,
-} from './overlay_mask';
-
-export {
   EuiOutsideClickDetector,
 } from './outside_click_detector';
+
+export {
+  EuiOverlayMask,
+} from './overlay_mask';
 
 export {
   EuiPage,
@@ -180,6 +218,7 @@ export {
 
 export {
   EuiPagination,
+  EuiPaginationButton,
 } from './pagination';
 
 export {
@@ -192,15 +231,30 @@ export {
 } from './popover';
 
 export {
+  EuiPortal,
+} from './portal';
+
+export {
   EuiProgress,
 } from './progress';
+
+export {
+  EuiSearchBar
+} from './search_bar';
+
+export {
+  EuiSideNav,
+} from './side_nav';
 
 export {
   EuiSpacer,
 } from './spacer';
 
 export {
+  EuiStep,
   EuiSteps,
+  EuiSubSteps,
+  EuiStepsHorizontal,
 } from './steps';
 
 export {
@@ -214,16 +268,31 @@ export {
   EuiTableRow,
   EuiTableRowCell,
   EuiTableRowCellCheckbox,
+  EuiTableHeaderMobile,
+  EuiTableSortMobile,
+  EuiTableSortMobileItem,
 } from './table';
+
+export {
+  EuiBasicTable,
+  EuiInMemoryTable
+} from './basic_table';
 
 export {
   EuiTab,
   EuiTabs,
+  EuiTabbedContent,
 } from './tabs';
 
 export {
-  EuiSideNav,
-} from './side_nav';
+  EuiText,
+  EuiTextColor,
+  EuiTextAlign,
+} from './text';
+
+export {
+  EuiTitle,
+} from './title';
 
 export {
   EuiGlobalToastList,
@@ -232,15 +301,6 @@ export {
 } from './toast';
 
 export {
-  Tooltip,
-  TooltipTrigger
-} from './tooltip';
-
-export {
-  EuiTitle,
-} from './title';
-
-export {
-  EuiText,
-  EuiTextColor,
-} from './text';
+  EuiIconTip,
+  EuiToolTip,
+} from './tool_tip';

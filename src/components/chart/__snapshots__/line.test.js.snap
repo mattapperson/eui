@@ -51,6 +51,10 @@ exports[`EuiLine all props are rendered 1`] = `
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
+            onTouchCancel={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
             onWheel={[Function]}
             width={600}
           >
@@ -391,7 +395,7 @@ exports[`EuiLine all props are rendered 1`] = `
                     ]
                   }
                 >
-                  <Component
+                  <Motion
                     defaultStyle={
                       Object {
                         "i": 0,
@@ -590,7 +594,7 @@ exports[`EuiLine all props are rendered 1`] = `
                         />
                       </g>
                     </GridLines>
-                  </Component>
+                  </Motion>
                 </Animation>
               </GridLines>
             </HorizontalGridLines>
@@ -933,7 +937,7 @@ exports[`EuiLine all props are rendered 1`] = `
                     ]
                   }
                 >
-                  <Component
+                  <Motion
                     defaultStyle={
                       Object {
                         "i": 0,
@@ -1469,7 +1473,7 @@ exports[`EuiLine all props are rendered 1`] = `
                         </AxisTicks>
                       </g>
                     </Axis>
-                  </Component>
+                  </Motion>
                 </Animation>
               </Axis>
             </XAxis>
@@ -1812,7 +1816,7 @@ exports[`EuiLine all props are rendered 1`] = `
                     ]
                   }
                 >
-                  <Component
+                  <Motion
                     defaultStyle={
                       Object {
                         "i": 0,
@@ -2204,7 +2208,7 @@ exports[`EuiLine all props are rendered 1`] = `
                         </AxisTicks>
                       </g>
                     </Axis>
-                  </Component>
+                  </Motion>
                 </Animation>
               </Axis>
             </YAxis>
@@ -2440,6 +2444,7 @@ exports[`EuiLine all props are rendered 1`] = `
                       10,
                     ]
                   }
+                  stack={false}
                   strokeDomain={Array []}
                   strokeRange={
                     Array [
@@ -2613,6 +2618,7 @@ exports[`EuiLine all props are rendered 1`] = `
                         10,
                       ]
                     }
+                    stack={false}
                     strokeDomain={Array []}
                     strokeRange={
                       Array [
@@ -2652,7 +2658,7 @@ exports[`EuiLine all props are rendered 1`] = `
                       ]
                     }
                   >
-                    <Component
+                    <Motion
                       defaultStyle={
                         Object {
                           "i": 0,
@@ -2768,6 +2774,7 @@ exports[`EuiLine all props are rendered 1`] = `
                             10,
                           ]
                         }
+                        stack={false}
                         strokeDomain={Array []}
                         strokeRange={
                           Array [
@@ -2825,7 +2832,7 @@ exports[`EuiLine all props are rendered 1`] = `
                           transform="translate(2,2)"
                         />
                       </LineSeries>
-                    </Component>
+                    </Motion>
                   </Animation>
                 </LineSeries>
                 <LineSeries
@@ -2925,6 +2932,7 @@ exports[`EuiLine all props are rendered 1`] = `
                       10,
                     ]
                   }
+                  stack={false}
                   strokeDomain={Array []}
                   strokeRange={
                     Array [
@@ -3098,6 +3106,7 @@ exports[`EuiLine all props are rendered 1`] = `
                         10,
                       ]
                     }
+                    stack={false}
                     strokeDomain={Array []}
                     strokeRange={
                       Array [
@@ -3137,7 +3146,7 @@ exports[`EuiLine all props are rendered 1`] = `
                       ]
                     }
                   >
-                    <Component
+                    <Motion
                       defaultStyle={
                         Object {
                           "i": 0,
@@ -3253,6 +3262,7 @@ exports[`EuiLine all props are rendered 1`] = `
                             10,
                           ]
                         }
+                        stack={false}
                         strokeDomain={Array []}
                         strokeRange={
                           Array [
@@ -3310,7 +3320,7 @@ exports[`EuiLine all props are rendered 1`] = `
                           transform="translate(2,2)"
                         />
                       </LineSeries>
-                    </Component>
+                    </Motion>
                   </Animation>
                 </LineSeries>
                 <MarkSeries
@@ -3616,7 +3626,7 @@ exports[`EuiLine all props are rendered 1`] = `
                       ]
                     }
                   >
-                    <Component
+                    <Motion
                       defaultStyle={
                         Object {
                           "i": 0,
@@ -3810,7 +3820,7 @@ exports[`EuiLine all props are rendered 1`] = `
                           />
                         </g>
                       </MarkSeries>
-                    </Component>
+                    </Motion>
                   </Animation>
                 </MarkSeries>
               </g>
@@ -3985,6 +3995,10 @@ exports[`EuiLine is rendered 1`] = `
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
+            onTouchCancel={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
             onWheel={[Function]}
             width={600}
           >
@@ -4325,7 +4339,7 @@ exports[`EuiLine is rendered 1`] = `
                     ]
                   }
                 >
-                  <Component
+                  <Motion
                     defaultStyle={
                       Object {
                         "i": 0,
@@ -4524,7 +4538,7 @@ exports[`EuiLine is rendered 1`] = `
                         />
                       </g>
                     </GridLines>
-                  </Component>
+                  </Motion>
                 </Animation>
               </GridLines>
             </HorizontalGridLines>
@@ -4867,7 +4881,7 @@ exports[`EuiLine is rendered 1`] = `
                     ]
                   }
                 >
-                  <Component
+                  <Motion
                     defaultStyle={
                       Object {
                         "i": 0,
@@ -5403,7 +5417,7 @@ exports[`EuiLine is rendered 1`] = `
                         </AxisTicks>
                       </g>
                     </Axis>
-                  </Component>
+                  </Motion>
                 </Animation>
               </Axis>
             </XAxis>
@@ -5746,7 +5760,7 @@ exports[`EuiLine is rendered 1`] = `
                     ]
                   }
                 >
-                  <Component
+                  <Motion
                     defaultStyle={
                       Object {
                         "i": 0,
@@ -6138,7 +6152,7 @@ exports[`EuiLine is rendered 1`] = `
                         </AxisTicks>
                       </g>
                     </Axis>
-                  </Component>
+                  </Motion>
                 </Animation>
               </Axis>
             </YAxis>
@@ -6369,6 +6383,7 @@ exports[`EuiLine is rendered 1`] = `
                       10,
                     ]
                   }
+                  stack={false}
                   strokeDomain={Array []}
                   strokeRange={
                     Array [
@@ -6541,6 +6556,7 @@ exports[`EuiLine is rendered 1`] = `
                         10,
                       ]
                     }
+                    stack={false}
                     strokeDomain={Array []}
                     strokeRange={
                       Array [
@@ -6580,7 +6596,7 @@ exports[`EuiLine is rendered 1`] = `
                       ]
                     }
                   >
-                    <Component
+                    <Motion
                       defaultStyle={
                         Object {
                           "i": 0,
@@ -6695,6 +6711,7 @@ exports[`EuiLine is rendered 1`] = `
                             10,
                           ]
                         }
+                        stack={false}
                         strokeDomain={Array []}
                         strokeRange={
                           Array [
@@ -6752,7 +6769,7 @@ exports[`EuiLine is rendered 1`] = `
                           transform="translate(2,2)"
                         />
                       </LineSeries>
-                    </Component>
+                    </Motion>
                   </Animation>
                 </LineSeries>
                 <LineSeries
@@ -6851,6 +6868,7 @@ exports[`EuiLine is rendered 1`] = `
                       10,
                     ]
                   }
+                  stack={false}
                   strokeDomain={Array []}
                   strokeRange={
                     Array [
@@ -7024,6 +7042,7 @@ exports[`EuiLine is rendered 1`] = `
                         10,
                       ]
                     }
+                    stack={false}
                     strokeDomain={Array []}
                     strokeRange={
                       Array [
@@ -7063,7 +7082,7 @@ exports[`EuiLine is rendered 1`] = `
                       ]
                     }
                   >
-                    <Component
+                    <Motion
                       defaultStyle={
                         Object {
                           "i": 0,
@@ -7179,6 +7198,7 @@ exports[`EuiLine is rendered 1`] = `
                             10,
                           ]
                         }
+                        stack={false}
                         strokeDomain={Array []}
                         strokeRange={
                           Array [
@@ -7236,7 +7256,7 @@ exports[`EuiLine is rendered 1`] = `
                           transform="translate(2,2)"
                         />
                       </LineSeries>
-                    </Component>
+                    </Motion>
                   </Animation>
                 </LineSeries>
                 <MarkSeries
@@ -7540,7 +7560,7 @@ exports[`EuiLine is rendered 1`] = `
                       ]
                     }
                   >
-                    <Component
+                    <Motion
                       defaultStyle={
                         Object {
                           "i": 0,
@@ -7733,7 +7753,7 @@ exports[`EuiLine is rendered 1`] = `
                           />
                         </g>
                       </MarkSeries>
-                    </Component>
+                    </Motion>
                   </Animation>
                 </MarkSeries>
               </g>

@@ -23,8 +23,9 @@ export const EuiPaginationButton = ({
   return (
     <EuiButtonEmpty
       className={classes}
-      size="s"
+      size="xs"
       color="text"
+      disabled={isPlaceholder}
       {...rest}
     >
       {children}
@@ -36,10 +37,10 @@ EuiPaginationButton.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   isActive: PropTypes.bool,
+
+  /**
+   * For ellipsis or other non-clickable buttons.
+   */
   isPlaceholder: PropTypes.bool,
   hideOnMobile: PropTypes.bool,
-};
-
-EuiPaginationButton.defaultProps = {
-  children: <span>&hellip;</span>,
 };

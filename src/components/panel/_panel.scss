@@ -1,22 +1,9 @@
-.euiPanel {
-  @include euiBottomShadowSmall;
+// Export basic class & modifiers
+@include euiPanel($selector: 'euiPanel');
 
-  background-color: $euiColorEmptyShade;
-  border: $euiBorderThin;
-  border-radius: $euiBorderRadius;
-  flex-grow: 1;
-
-  @each $modifier, $amount in $euiPanelPaddingModifiers {
-    &.euiPanel--#{$modifier} {
-      padding: $amount;
-    }
-  }
-
-  &.euiPanel--shadow {
-    @include euiBottomShadow;
-  }
-
-  &.euiPanel--flexGrowZero {
-    flex-grow: 0;
+// Specific
+@each $modifier, $amount in $euiPanelPaddingModifiers {
+  .euiPanel.euiPanel--#{$modifier} {
+    padding: $amount;
   }
 }

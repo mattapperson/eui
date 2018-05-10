@@ -18,6 +18,7 @@ export const EuiPanel = ({
   hasShadow,
   grow,
   panelRef,
+  onClick,
   ...rest
 }) => {
 
@@ -27,18 +28,28 @@ export const EuiPanel = ({
     {
       'euiPanel--shadow': hasShadow,
       'euiPanel--flexGrowZero': !grow,
+      'euiPanel--isClickable': onClick,
     },
     className
   );
 
+  const PanelTag = onClick ? 'button' : 'div';
+
+  const props = {
+    ref: panelRef,
+    className: classes
+  };
+
+  // Avoid passing down this prop if it hasn't been supplied, in order to
+  // avoid noise in react-test-renderer snapshots.
+  if (onClick != null) {
+    props.onClick = onClick;
+  }
+
   return (
-    <div
-      ref={panelRef}
-      className={classes}
-      {...rest}
-    >
+    <PanelTag {...props} {...rest}>
       {children}
-    </div>
+    </PanelTag>
   );
 
 };
@@ -50,6 +61,7 @@ EuiPanel.propTypes = {
   paddingSize: PropTypes.oneOf(SIZES),
   grow: PropTypes.bool,
   panelRef: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 EuiPanel.defaultProps = {

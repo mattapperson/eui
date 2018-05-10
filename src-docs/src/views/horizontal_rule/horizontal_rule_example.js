@@ -8,6 +8,7 @@ import {
 
 import {
   EuiCode,
+  EuiHorizontalRule,
 } from '../../../../src/components';
 
 import HorizontalRule from './horizontal_rule';
@@ -19,9 +20,8 @@ const horizontalRuleMarginSource = require('!!raw-loader!./horizontal_rule_margi
 const horizontalRuleMarginHtml = renderToHtml(HorizontalRuleMargin);
 
 export const HorizontalRuleExample = {
-  title: 'HorizontalRule',
+  title: 'Horizontal Rule',
   sections: [{
-    title: 'HorizontalRule',
     source: [{
       type: GuideSectionTypes.JS,
       code: horizontalRuleSource,
@@ -34,9 +34,10 @@ export const HorizontalRuleExample = {
         <EuiCode>HorizontalRule</EuiCode> can carry a size. By default it will be full.
       </p>
     ),
+    props: { EuiHorizontalRule },
     demo: <HorizontalRule />,
   }, {
-    title: 'HorizontalRule margins',
+    title: 'Margins',
     source: [{
       type: GuideSectionTypes.JS,
       code: horizontalRuleMarginSource,

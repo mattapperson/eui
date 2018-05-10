@@ -8,20 +8,33 @@ import {
 
 import {
   EuiCode,
+  EuiSteps,
+  EuiStep,
 } from '../../../../src/components';
 
 import Steps from './steps';
 const stepsSource = require('!!raw-loader!./steps');
 const stepsHtml = renderToHtml(Steps);
 
+import StepsComplex from './steps_complex';
+const stepsComplexSource = require('!!raw-loader!./steps_complex');
+const stepsComplexHtml = renderToHtml(StepsComplex);
+
 import HeadingElementSteps from './heading_element_steps';
 const headingElementStepsSource = require('!!raw-loader!./heading_element_steps');
 const headingElementStepsHtml = renderToHtml(HeadingElementSteps);
 
+import StepsHorizontal from './steps_horizontal';
+const stepsHorizontalSource = require('!!raw-loader!./steps_horizontal');
+const stepsHorizontalHtml = renderToHtml(StepsHorizontal);
+
+import Status from './status';
+const statusSource = require('!!raw-loader!./status');
+const statusHtml = renderToHtml(Steps);
+
 export const StepsExample = {
   title: 'Steps',
   sections: [{
-    title: 'Steps',
     source: [{
       type: GuideSectionTypes.JS,
       code: stepsSource,
@@ -34,7 +47,26 @@ export const StepsExample = {
         Numbered steps
       </p>
     ),
+    props: { EuiSteps, EuiStep },
     demo: <Steps />,
+  },
+  {
+    title: 'Complex steps',
+    source: [{
+      type: GuideSectionTypes.JS,
+      code: stepsComplexSource,
+    }, {
+      type: GuideSectionTypes.HTML,
+      code: stepsComplexHtml,
+    }],
+    text: (
+      <p>
+        If you need to call out a set of substeps that are not lines of code,
+        most likely a <EuiCode>&lt;ol/&gt;</EuiCode>, wrap
+        the block in a <EuiCode>&lt;EuiSubSteps/&gt;</EuiCode>.
+      </p>
+    ),
+    demo: <StepsComplex />,
   },
   {
     title: 'Heading elements',
@@ -59,5 +91,37 @@ export const StepsExample = {
       </div>
     ),
     demo: <HeadingElementSteps />,
+  },
+  {
+    title: 'Steps status',
+    source: [{
+      type: GuideSectionTypes.JS,
+      code: statusSource,
+    }, {
+      type: GuideSectionTypes.HTML,
+      code: statusHtml,
+    }],
+    text: (
+      <p>
+        Steps can optionally include <EuiCode>status</EuiCode> prop with
+        a value of <EuiCode>complete</EuiCode> or <EuiCode>incomplete</EuiCode>. This
+        is used mostly as a final step when you need to make some sort of final check.
+      </p>
+    ),
+    demo: <Status />,
+  },
+  {
+    title: 'Horizontal',
+    source: [{
+      type: GuideSectionTypes.JS,
+      code: stepsHorizontalSource,
+    }, {
+      type: GuideSectionTypes.HTML,
+      code: stepsHorizontalHtml,
+    }],
+    text: (
+      <p>For use when forms/setup instructions can and should be split into multiple pages.</p>
+    ),
+    demo: <StepsHorizontal />
   }],
 };

@@ -13,12 +13,18 @@ import {
   EuiFlexItem,
 } from '../flex';
 
-export class EuiAccordion extends Component {
-  static propTypes = {
-    children: PropTypes.node,
-    className: PropTypes.string,
-  }
+const paddingSizeToClassNameMap = {
+  none: null,
+  xs: 'euiAccordion__padding--xs',
+  s: 'euiAccordion__padding--s',
+  m: 'euiAccordion__padding--m',
+  l: 'euiAccordion__padding--l',
+  xl: 'euiAccordion__padding--xl',
+};
 
+export const PADDING_SIZES = Object.keys(paddingSizeToClassNameMap);
+
+export class EuiAccordion extends Component {
   constructor(props) {
     super(props);
 
@@ -26,21 +32,19 @@ export class EuiAccordion extends Component {
       isOpen: props.initialIsOpen,
     };
 
-    this.onToggleOpen = this.onToggleOpen.bind(this);
+    this.onToggle = this.onToggle.bind(this);
   }
 
-  onToggleOpen() {
-    const currentState = this.state.isOpen;
-    const height = this.childContent.clientHeight;
-    this.setState({
-      isOpen: !currentState,
-    });
+  componentDidUpdate() {
+    const height = this.state.isOpen ? this.childContent.clientHeight: 0;
 
-    if (!currentState) {
-      this.childWrapper.setAttribute('style', `height: ${height}px`);
-    } else {
-      this.childWrapper.setAttribute('style', `height: 0px`);
-    }
+    this.childWrapper.setAttribute('style', `height: ${height}px`);
+  }
+
+  onToggle() {
+    this.setState(prevState => ({
+      isOpen: !prevState.isOpen
+    }));
   }
 
   render() {
@@ -52,16 +56,22 @@ export class EuiAccordion extends Component {
       buttonClassName,
       buttonContentClassName,
       extraAction,
+      paddingSize,
       initialIsOpen, // eslint-disable-line no-unused-vars
       ...rest
     } = this.props;
+
 
     const classes = classNames(
       'euiAccordion',
       {
         'euiAccordion-isOpen': this.state.isOpen,
       },
-      className
+      className,
+    );
+
+    const paddingClass = classNames(
+      paddingSizeToClassNameMap[paddingSize],
     );
 
     const buttonClasses = classNames(
@@ -98,10 +108,10 @@ export class EuiAccordion extends Component {
             <button
               aria-controls={id}
               aria-expanded={!!this.state.isOpen}
-              onClick={this.onToggleOpen}
+              onClick={this.onToggle}
               className={buttonClasses}
             >
-              <EuiFlexGroup gutterSize="s" alignItems="center">
+              <EuiFlexGroup gutterSize="s" alignItems="center" responsive={false}>
                 <EuiFlexItem grow={false}>
                   {icon}
                 </EuiFlexItem>
@@ -122,7 +132,9 @@ export class EuiAccordion extends Component {
           id={id}
         >
           <div ref={node => { this.childContent = node; }}>
-            {children}
+            <div className={paddingClass}>
+              {children}
+            </div>
           </div>
         </div>
       </div>
@@ -131,15 +143,38 @@ export class EuiAccordion extends Component {
 }
 
 EuiAccordion.propTypes = {
+  /**
+   * The content of the exposed accordion.
+   */
   children: PropTypes.node,
   id: PropTypes.string.isRequired,
+  /**
+   * Class that will apply to the entire accordion.
+   */
   className: PropTypes.string,
+  /**
+   * Class that will apply to the trigger for the accordion.
+   */
   buttonContentClassName: PropTypes.string,
+  /**
+   * The content of the clickable trigger
+   */
   buttonContent: PropTypes.node,
+  /**
+   * Will appear right aligned against the button. Useful for separate actions like deletions.
+   */
   extraAction: PropTypes.node,
+  /**
+   * The accordion will start in the open state.
+   */
   initialIsOpen: PropTypes.bool,
+  /**
+   * The padding around the exposed accordion content.
+   */
+  paddingSize: PropTypes.oneOf(PADDING_SIZES),
 };
 
 EuiAccordion.defaultProps = {
   initialIsOpen: false,
+  paddingSize: 'none',
 };

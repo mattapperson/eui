@@ -1,15 +1,50 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Fragment } from 'react';
 
-export function GuidePage({ children }) {
+import {
+  Link,
+} from 'react-router';
+
+import {
+  EuiTitle,
+  EuiSpacer,
+  EuiFlexGroup,
+  EuiFlexItem,
+  EuiButton
+} from '../../../../src/components';
+
+export const GuidePage = ({ children, title, intro, componentLinkTo }) => {
   return (
-    <div>
+    <Fragment>
+      <div className="guideSection__text">
+        <EuiFlexGroup>
+          <EuiFlexItem>
+            <EuiTitle size="l">
+              <h1>{title}</h1>
+            </EuiTitle>
+          </EuiFlexItem>
+          { componentLinkTo &&
+            <EuiFlexItem grow={false}>
+              <Link to={componentLinkTo}>
+                <EuiButton>
+                  View component code
+                </EuiButton>
+              </Link>
+            </EuiFlexItem>
+          }
+        </EuiFlexGroup>
+        <EuiSpacer />
+        {intro}
+      </div>
+
       {children}
-    </div>
+    </Fragment>
   );
-}
+};
 
 GuidePage.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.node,
   title: PropTypes.string,
+  intro: PropTypes.node,
+  componentLinkTo: PropTypes.string,
 };

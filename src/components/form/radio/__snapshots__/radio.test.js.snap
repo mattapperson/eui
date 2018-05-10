@@ -3,7 +3,7 @@
 exports[`EuiRadio is rendered 1`] = `
 <div
   aria-label="aria-label"
-  class="euiRadio testClass1 testClass2"
+  class="euiRadio euiRadio--noLabel testClass1 testClass2"
   data-test-subj="test subject string"
 >
   <input
@@ -13,17 +13,13 @@ exports[`EuiRadio is rendered 1`] = `
   />
   <div
     class="euiRadio__circle"
-  >
-    <div
-      class="euiRadio__check"
-    />
-  </div>
+  />
 </div>
 `;
 
 exports[`EuiRadio props checked is rendered 1`] = `
 <div
-  class="euiRadio"
+  class="euiRadio euiRadio--noLabel"
 >
   <input
     checked=""
@@ -33,17 +29,13 @@ exports[`EuiRadio props checked is rendered 1`] = `
   />
   <div
     class="euiRadio__circle"
-  >
-    <div
-      class="euiRadio__check"
-    />
-  </div>
+  />
 </div>
 `;
 
 exports[`EuiRadio props disabled is rendered 1`] = `
 <div
-  class="euiRadio"
+  class="euiRadio euiRadio--noLabel"
 >
   <input
     class="euiRadio__input"
@@ -53,11 +45,7 @@ exports[`EuiRadio props disabled is rendered 1`] = `
   />
   <div
     class="euiRadio__circle"
-  >
-    <div
-      class="euiRadio__check"
-    />
-  </div>
+  />
 </div>
 `;
 
@@ -72,11 +60,7 @@ exports[`EuiRadio props label is rendered 1`] = `
   />
   <div
     class="euiRadio__circle"
-  >
-    <div
-      class="euiRadio__check"
-    />
-  </div>
+  />
   <label
     class="euiRadio__label"
     for="id"
@@ -85,5 +69,21 @@ exports[`EuiRadio props label is rendered 1`] = `
       Label
     </span>
   </label>
+</div>
+`;
+
+exports[`EuiRadio props value is rendered 1`] = `
+<div
+  class="euiRadio euiRadio--noLabel"
+>
+  <input
+    class="euiRadio__input"
+    id="id"
+    type="radio"
+    value="bobbins"
+  />
+  <div
+    class="euiRadio__circle"
+  />
 </div>
 `;

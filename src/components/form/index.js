@@ -2,10 +2,12 @@ export {
   EuiCheckbox,
   EuiCheckboxGroup,
 } from './checkbox';
+export { EuiDescribedFormGroup } from './described_form_group';
 export { EuiFieldNumber } from './field_number';
 export { EuiFieldPassword } from './field_password';
 export { EuiFieldSearch } from './field_search';
 export { EuiFieldText } from './field_text';
+export { EuiFilePicker } from './file_picker';
 export { EuiForm } from './form';
 export { EuiFormControlLayout } from './form_control_layout';
 export { EuiFormErrorText } from './form_error_text';

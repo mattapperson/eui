@@ -1,10 +1,13 @@
 .euiToast {
-  @include euiBottomShadow;
+  @include euiBottomShadowLarge;
 
   position: relative;
   padding: $euiSize;
   background-color: $euiColorEmptyShade;
   border: $euiBorderThin;
+  @if (lightness($euiTextColor) < 50) {
+    border-bottom-color: rgba($euiShadowColor, .6);
+  }
   width: 100%;
 
   &:hover .euiToast__closeButton,
@@ -66,7 +69,6 @@ $toastTypes: (
  * 3. Account for close button.
  */
 .euiToastHeader {
-  @include euiFontSize;
   padding-right: $euiSizeL; /* 3 */
 
   display: flex;
@@ -87,10 +89,17 @@ $toastTypes: (
   }
 
   .euiToastHeader__title {
-    color: $euiTitleColor;
+    @include euiTitle("xs");
     font-weight: $euiFontWeightLight;
   }
 
 .euiToastHeader--withBody {
   margin-bottom: $euiSizeM;
+}
+
+/**
+ * 1. Prevent long lines from overflowing.
+ */
+.euiToastBody {
+  word-wrap: break-word; /* 1 */
 }

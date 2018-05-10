@@ -21,6 +21,9 @@ export const EuiCheckbox = ({
   const classes = classNames(
     'euiCheckbox',
     typeToClassNameMap[type],
+    {
+      'euiCheckbox--noLabel': !label
+    },
     className
   );
 
@@ -51,9 +54,7 @@ export const EuiCheckbox = ({
         {...rest}
       />
 
-      <div className="euiCheckbox__square">
-        <div className="euiCheckbox__check" />
-      </div>
+      <div className="euiCheckbox__square" />
 
       {optionalLabel}
     </div>

@@ -8,6 +8,7 @@ import {
 
 import {
   EuiCode,
+  EuiTitle,
 } from '../../../../src/components';
 
 import Title from './title';
@@ -17,7 +18,6 @@ const titleHtml = renderToHtml(Title);
 export const TitleExample = {
   title: 'Title',
   sections: [{
-    title: 'Title',
     source: [{
       type: GuideSectionTypes.JS,
       code: titleSource,
@@ -33,6 +33,7 @@ export const TitleExample = {
         they are margin neutral and more suitable for general layout design.
       </p>
     ),
+    props: { EuiTitle },
     demo: <Title />,
   }],
 };

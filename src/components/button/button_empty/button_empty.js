@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import {
+  EuiLoadingSpinner
+} from '../../loading';
+
+import { getSecureRelForTarget } from '../../../services';
+
+import {
   ICON_TYPES,
   EuiIcon,
 } from '../../icon';
@@ -48,8 +54,17 @@ export const EuiButtonEmpty = ({
   size,
   flush,
   isDisabled,
+  isLoading,
+  href,
+  target,
+  rel,
+  type,
+  buttonRef,
   ...rest
 }) => {
+
+  // If in the loading state, force disabled to true
+  isDisabled = isLoading ? true : isDisabled;
 
   const classes = classNames(
     'euiButtonEmpty',
@@ -63,7 +78,14 @@ export const EuiButtonEmpty = ({
   // Add an icon to the button if one exists.
   let buttonIcon;
 
-  if (iconType) {
+  if (isLoading) {
+    buttonIcon = (
+      <EuiLoadingSpinner
+        className="euiButton__spinner"
+        size="m"
+      />
+    );
+  } else if (iconType) {
     buttonIcon = (
       <EuiIcon
         className="euiButtonEmpty__icon"
@@ -74,18 +96,40 @@ export const EuiButtonEmpty = ({
     );
   }
 
-  return (
-    <button
-      disabled={isDisabled}
-      className={classes}
-      {...rest}
-    >
-      <span className="euiButtonEmpty__content">
-        {buttonIcon}
-        <span>{children}</span>
-      </span>
-    </button>
-  );
+  if (href) {
+    const secureRel = getSecureRelForTarget(target, rel);
+
+    return (
+      <a
+        className={classes}
+        href={href}
+        target={target}
+        rel={secureRel}
+        ref={buttonRef}
+        {...rest}
+      >
+        <span className="euiButtonEmpty__content">
+          {buttonIcon}
+          <span>{children}</span>
+        </span>
+      </a>
+    );
+  } else {
+    return (
+      <button
+        disabled={isDisabled}
+        className={classes}
+        type={type}
+        ref={buttonRef}
+        {...rest}
+      >
+        <span className="euiButtonEmpty__content">
+          {buttonIcon}
+          <span>{children}</span>
+        </span>
+      </button>
+    );
+  }
 };
 
 EuiButtonEmpty.propTypes = {
@@ -97,6 +141,18 @@ EuiButtonEmpty.propTypes = {
   size: PropTypes.oneOf(SIZES),
   flush: PropTypes.oneOf(FLUSH_TYPES),
   isDisabled: PropTypes.bool,
+  href: PropTypes.string,
+  target: PropTypes.string,
+  rel: PropTypes.string,
+  onClick: PropTypes.func,
+
+  /**
+   * Adds/swaps for loading spinner & disables
+   */
+  isLoading: PropTypes.bool,
+
+  type: PropTypes.string,
+  buttonRef: PropTypes.func,
 };
 
 EuiButtonEmpty.defaultProps = {

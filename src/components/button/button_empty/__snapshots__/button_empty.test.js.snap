@@ -108,6 +108,21 @@ exports[`EuiButtonEmpty props flush right is rendered 1`] = `
 </button>
 `;
 
+exports[`EuiButtonEmpty props href secures the rel attribute when the target is _blank 1`] = `
+<a
+  class="euiButtonEmpty euiButtonEmpty--primary"
+  href="#"
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  <span
+    class="euiButtonEmpty__content"
+  >
+    <span />
+  </span>
+</a>
+`;
+
 exports[`EuiButtonEmpty props iconSide left is rendered 1`] = `
 <button
   class="euiButtonEmpty euiButtonEmpty--primary"
@@ -118,7 +133,7 @@ exports[`EuiButtonEmpty props iconSide left is rendered 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="euiIcon euiButtonEmpty__icon euiIcon--medium"
+      class="euiIcon euiIcon--medium euiButtonEmpty__icon"
       height="18"
       viewBox="0 0 18 18"
       width="18"
@@ -152,7 +167,7 @@ exports[`EuiButtonEmpty props iconSide right is rendered 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="euiIcon euiButtonEmpty__icon euiIcon--medium"
+      class="euiIcon euiIcon--medium euiButtonEmpty__icon"
       height="18"
       viewBox="0 0 18 18"
       width="18"
@@ -186,7 +201,7 @@ exports[`EuiButtonEmpty props iconType is rendered 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="euiIcon euiButtonEmpty__icon euiIcon--medium"
+      class="euiIcon euiIcon--medium euiButtonEmpty__icon"
       height="18"
       viewBox="0 0 18 18"
       width="18"

@@ -8,6 +8,7 @@ import {
 
 import {
   EuiCode,
+  EuiExpression,
 } from '../../../../src/components';
 
 import Expression from './expression';
@@ -17,7 +18,6 @@ const expressionHtml = renderToHtml(Expression);
 export const ExpressionExample = {
   title: 'Expression',
   sections: [{
-    title: 'Expression',
     source: [{
       type: GuideSectionTypes.JS,
       code: expressionSource,
@@ -30,6 +30,7 @@ export const ExpressionExample = {
         Use the <EuiCode>EuiExpression</EuiCode> component to surface editable expressions.
       </p>
     ),
+    props: { EuiExpression },
     demo: <Expression />,
   }],
 };

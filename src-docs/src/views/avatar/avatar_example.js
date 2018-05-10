@@ -7,6 +7,7 @@ import {
 } from '../../components';
 
 import {
+  EuiAvatar,
   EuiCode,
 } from '../../../../src/components';
 
@@ -17,7 +18,6 @@ const avatarHtml = renderToHtml(Avatar);
 export const AvatarExample = {
   title: 'Avatar',
   sections: [{
-    title: 'Avatar',
     source: [{
       type: GuideSectionTypes.JS,
       code: avatarSource,
@@ -33,6 +33,7 @@ export const AvatarExample = {
         come from the set of colors used for visualiations.
       </p>
     ),
+    props: { EuiAvatar },
     demo: <Avatar />,
   }]
 };

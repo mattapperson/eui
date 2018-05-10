@@ -2,6 +2,7 @@
 
 exports[`EuiFormRow behavior onBlur is called in child 1`] = `
 <EuiFormRow
+  describedByIds={Array []}
   fullWidth={false}
   hasEmptyLabelSpace={false}
   label={
@@ -38,6 +39,7 @@ exports[`EuiFormRow behavior onBlur is called in child 1`] = `
 
 exports[`EuiFormRow behavior onBlur works in parent even if not in child 1`] = `
 <EuiFormRow
+  describedByIds={Array []}
   fullWidth={false}
   hasEmptyLabelSpace={false}
   label={
@@ -74,6 +76,7 @@ exports[`EuiFormRow behavior onBlur works in parent even if not in child 1`] = `
 
 exports[`EuiFormRow behavior onFocus is called in child 1`] = `
 <EuiFormRow
+  describedByIds={Array []}
   fullWidth={false}
   hasEmptyLabelSpace={false}
   label={
@@ -110,6 +113,7 @@ exports[`EuiFormRow behavior onFocus is called in child 1`] = `
 
 exports[`EuiFormRow behavior onFocus works in parent even if not in child 1`] = `
 <EuiFormRow
+  describedByIds={Array []}
   fullWidth={false}
   hasEmptyLabelSpace={false}
   label={
@@ -157,6 +161,20 @@ exports[`EuiFormRow is rendered 1`] = `
 </div>
 `;
 
+exports[`EuiFormRow props describedByIds is rendered 1`] = `
+<div
+  className="euiFormRow"
+  id="generated-id-row"
+>
+  <input
+    aria-describedby="generated-id-additional"
+    id="generated-id"
+    onBlur={[Function]}
+    onFocus={[Function]}
+  />
+</div>
+`;
+
 exports[`EuiFormRow props error as array is rendered 1`] = `
 <div
   class="euiFormRow"
@@ -167,12 +185,14 @@ exports[`EuiFormRow props error as array is rendered 1`] = `
     id="generated-id"
   />
   <div
+    aria-live="polite"
     class="euiFormErrorText euiFormRow__text"
     id="generated-id-error-0"
   >
     Error
   </div>
   <div
+    aria-live="polite"
     class="euiFormErrorText euiFormRow__text"
     id="generated-id-error-1"
   >
@@ -191,6 +211,7 @@ exports[`EuiFormRow props error as string is rendered 1`] = `
     id="generated-id"
   />
   <div
+    aria-live="polite"
     class="euiFormErrorText euiFormRow__text"
     id="generated-id-error-0"
   >
@@ -269,6 +290,7 @@ exports[`EuiFormRow props isInvalid is rendered 1`] = `
   id="generated-id-row"
 >
   <label
+    aria-invalid="true"
     class="euiFormLabel euiFormLabel-isInvalid"
     for="generated-id"
   >

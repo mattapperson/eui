@@ -43,7 +43,7 @@ const repeatableForm = (
 
 const buttonContent = (
   <div>
-    <EuiFlexGroup gutterSize="s">
+    <EuiFlexGroup gutterSize="s" alignItems="center">
       <EuiFlexItem grow={false}>
         <EuiIcon type="logoWebhook" size="m" />
       </EuiFlexItem>
@@ -88,10 +88,9 @@ export default () => (
       buttonClassName="euiAccordionForm__button"
       buttonContent={buttonContent}
       extraAction={extraAction}
+      paddingSize="l"
     >
-      <div className="euiAccordionForm__children">
-        {repeatableForm}
-      </div>
+      {repeatableForm}
     </EuiAccordion>
 
     <EuiAccordion
@@ -100,10 +99,9 @@ export default () => (
       buttonClassName="euiAccordionForm__button"
       buttonContent={buttonContent}
       extraAction={extraAction}
+      paddingSize="l"
     >
-      <div className="euiAccordionForm__children">
-        {repeatableForm}
-      </div>
+      {repeatableForm}
     </EuiAccordion>
   </div>
 );

@@ -5,14 +5,19 @@ import classNames from 'classnames';
 export const EuiRadio = ({
   className,
   id,
+  name,
   checked,
   label,
+  value,
   onChange,
   disabled,
   ...rest
 }) => {
   const classes = classNames(
     'euiRadio',
+    {
+      'euiRadio--noLabel': !label
+    },
     className
   );
 
@@ -38,14 +43,14 @@ export const EuiRadio = ({
         className="euiRadio__input"
         type="radio"
         id={id}
+        name={name}
+        value={value}
         checked={checked}
         onChange={onChange}
         disabled={disabled}
       />
 
-      <div className="euiRadio__circle">
-        <div className="euiRadio__check" />
-      </div>
+      <div className="euiRadio__circle" />
 
       {optionalLabel}
     </div>
@@ -57,6 +62,7 @@ EuiRadio.propTypes = {
   id: PropTypes.string.isRequired,
   checked: PropTypes.bool.isRequired,
   label: PropTypes.node,
+  value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
 };

@@ -2,17 +2,39 @@ import React from 'react';
 
 import {
   EuiText,
+  EuiHorizontalRule,
 } from '../../../../src/components';
 
 export default () => (
   <div>
-    <EuiText>
+    <EuiText grow={false}>
       <h1>This is Heading One</h1>
       <p>
         Far out in the uncharted backwaters of the unfashionable end of
         the western spiral arm of the Galaxy lies a small unregarded
         yellow sun.
+
+        When suddenly some wild JavaScript code appeared! <code>const whoa = &quot;!&quot;</code>
       </p>
+
+      <pre>
+        <code>
+          const completelyUnexpected = &quot;the audacity!&quot;;
+        </code>
+      </pre>
+
+      <p>
+        That was close.
+      </p>
+
+      <blockquote>
+        <p>
+          I&apos;ve seen things you people wouldn&apos;t believe.
+          Attack ships on fire off the shoulder of Orion.
+          I watched C-beams glitter in the dark near the Tannhäuser Gate.
+          All those moments will be lost in time, like tears in rain. Time to die.
+        </p>
+      </blockquote>
 
       <p>
         Orbiting this at a distance of roughly ninety-two million miles
@@ -61,6 +83,47 @@ export default () => (
         So it thought the dog was making a poor life choice by focusing so much on mindfulness.
         What if its car broke down?
       </p>
+
+      <h4>This is Heading Four</h4>
+
+      <p>
+        So it thought the dog was making a poor life choice by focusing so much on mindfulness.
+        What if its car broke down?
+      </p>
+
+      <h5>This is Heading Five</h5>
+
+      <p>
+        <small>
+          So it thought the dog was making a poor life choice by focusing so much on mindfulness.
+          What if its car broke down?
+        </small>
+      </p>
+
+      <h6>This is Heading Six</h6>
+
+      <EuiHorizontalRule />
+
+      <dl>
+        <dt>
+          The Elder Scrolls: Morrowind
+        </dt>
+        <dd>
+          The opening music alone evokes such strong memories.
+        </dd>
+        <dt>
+          TIE Fighter
+        </dt>
+        <dd>
+          The sequel to XWING, join the dark side and fly for the Emporer.
+        </dd>
+        <dt>
+          Quake 2
+        </dt>
+        <dd>
+          The game that made me drop out of college.
+        </dd>
+      </dl>
     </EuiText>
   </div>
 );
