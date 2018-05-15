@@ -60,6 +60,9 @@ import { BadgeExample }
 import { BottomBarExample }
   from './views/bottom_bar/bottom_bar_example';
 
+import { BreadcrumbsExample }
+  from './views/breadcrumbs/breadcrumbs_example';
+
 import { ButtonExample }
   from './views/button/button_example';
 
@@ -289,6 +292,7 @@ const navigation = [{
 }, {
   name: 'Navigation',
   items: [
+    BreadcrumbsExample,
     ButtonExample,
     ContextMenuExample,
     KeyPadMenuExample,

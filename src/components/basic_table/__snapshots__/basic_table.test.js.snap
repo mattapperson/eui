@@ -483,7 +483,9 @@ exports[`EuiBasicTable with pagination and selection 1`] = `
           width="24px"
         >
           <EuiCheckbox
+            aria-label="Select all rows"
             checked={false}
+            compressed={false}
             data-test-subj="checkboxSelectAll"
             disabled={false}
             id="_selection_column-checkbox"
@@ -510,7 +512,9 @@ exports[`EuiBasicTable with pagination and selection 1`] = `
               key="_selection_column_1"
             >
               <EuiCheckbox
+                aria-label="Select this row"
                 checked={false}
+                compressed={false}
                 data-test-subj="checkboxSelectRow-1"
                 disabled={false}
                 id="_selection_column_1-checkbox"
@@ -538,7 +542,9 @@ exports[`EuiBasicTable with pagination and selection 1`] = `
               key="_selection_column_2"
             >
               <EuiCheckbox
+                aria-label="Select this row"
                 checked={false}
+                compressed={false}
                 data-test-subj="checkboxSelectRow-2"
                 disabled={false}
                 id="_selection_column_2-checkbox"
@@ -566,7 +572,9 @@ exports[`EuiBasicTable with pagination and selection 1`] = `
               key="_selection_column_3"
             >
               <EuiCheckbox
+                aria-label="Select this row"
                 checked={false}
+                compressed={false}
                 data-test-subj="checkboxSelectRow-3"
                 disabled={false}
                 id="_selection_column_3-checkbox"
@@ -631,7 +639,9 @@ exports[`EuiBasicTable with pagination, selection and sorting 1`] = `
           width="24px"
         >
           <EuiCheckbox
+            aria-label="Select all rows"
             checked={false}
+            compressed={false}
             data-test-subj="checkboxSelectAll"
             disabled={false}
             id="_selection_column-checkbox"
@@ -661,7 +671,9 @@ exports[`EuiBasicTable with pagination, selection and sorting 1`] = `
               key="_selection_column_1"
             >
               <EuiCheckbox
+                aria-label="Select this row"
                 checked={false}
+                compressed={false}
                 data-test-subj="checkboxSelectRow-1"
                 disabled={false}
                 id="_selection_column_1-checkbox"
@@ -689,7 +701,9 @@ exports[`EuiBasicTable with pagination, selection and sorting 1`] = `
               key="_selection_column_2"
             >
               <EuiCheckbox
+                aria-label="Select this row"
                 checked={false}
+                compressed={false}
                 data-test-subj="checkboxSelectRow-2"
                 disabled={false}
                 id="_selection_column_2-checkbox"
@@ -717,7 +731,9 @@ exports[`EuiBasicTable with pagination, selection and sorting 1`] = `
               key="_selection_column_3"
             >
               <EuiCheckbox
+                aria-label="Select this row"
                 checked={false}
+                compressed={false}
                 data-test-subj="checkboxSelectRow-3"
                 disabled={false}
                 id="_selection_column_3-checkbox"
@@ -782,7 +798,9 @@ exports[`EuiBasicTable with pagination, selection, sorting and a single record a
           width="24px"
         >
           <EuiCheckbox
+            aria-label="Select all rows"
             checked={false}
+            compressed={false}
             data-test-subj="checkboxSelectAll"
             disabled={false}
             id="_selection_column-checkbox"
@@ -819,7 +837,9 @@ exports[`EuiBasicTable with pagination, selection, sorting and a single record a
               key="_selection_column_1"
             >
               <EuiCheckbox
+                aria-label="Select this row"
                 checked={false}
+                compressed={false}
                 data-test-subj="checkboxSelectRow-1"
                 disabled={false}
                 id="_selection_column_1-checkbox"
@@ -875,7 +895,9 @@ exports[`EuiBasicTable with pagination, selection, sorting and a single record a
               key="_selection_column_2"
             >
               <EuiCheckbox
+                aria-label="Select this row"
                 checked={false}
+                compressed={false}
                 data-test-subj="checkboxSelectRow-2"
                 disabled={false}
                 id="_selection_column_2-checkbox"
@@ -931,7 +953,9 @@ exports[`EuiBasicTable with pagination, selection, sorting and a single record a
               key="_selection_column_3"
             >
               <EuiCheckbox
+                aria-label="Select this row"
                 checked={false}
+                compressed={false}
                 data-test-subj="checkboxSelectRow-3"
                 disabled={false}
                 id="_selection_column_3-checkbox"
@@ -1024,7 +1048,9 @@ exports[`EuiBasicTable with pagination, selection, sorting and column dataType 1
           width="24px"
         >
           <EuiCheckbox
+            aria-label="Select all rows"
             checked={false}
+            compressed={false}
             data-test-subj="checkboxSelectAll"
             disabled={false}
             id="_selection_column-checkbox"
@@ -1054,7 +1080,9 @@ exports[`EuiBasicTable with pagination, selection, sorting and column dataType 1
               key="_selection_column_1"
             >
               <EuiCheckbox
+                aria-label="Select this row"
                 checked={false}
+                compressed={false}
                 data-test-subj="checkboxSelectRow-1"
                 disabled={false}
                 id="_selection_column_1-checkbox"
@@ -1082,7 +1110,9 @@ exports[`EuiBasicTable with pagination, selection, sorting and column dataType 1
               key="_selection_column_2"
             >
               <EuiCheckbox
+                aria-label="Select this row"
                 checked={false}
+                compressed={false}
                 data-test-subj="checkboxSelectRow-2"
                 disabled={false}
                 id="_selection_column_2-checkbox"
@@ -1110,7 +1140,9 @@ exports[`EuiBasicTable with pagination, selection, sorting and column dataType 1
               key="_selection_column_3"
             >
               <EuiCheckbox
+                aria-label="Select this row"
                 checked={false}
+                compressed={false}
                 data-test-subj="checkboxSelectRow-3"
                 disabled={false}
                 id="_selection_column_3-checkbox"
@@ -1175,7 +1207,9 @@ exports[`EuiBasicTable with pagination, selection, sorting and column renderer 1
           width="24px"
         >
           <EuiCheckbox
+            aria-label="Select all rows"
             checked={false}
+            compressed={false}
             data-test-subj="checkboxSelectAll"
             disabled={false}
             id="_selection_column-checkbox"
@@ -1205,7 +1239,9 @@ exports[`EuiBasicTable with pagination, selection, sorting and column renderer 1
               key="_selection_column_1"
             >
               <EuiCheckbox
+                aria-label="Select this row"
                 checked={false}
+                compressed={false}
                 data-test-subj="checkboxSelectRow-1"
                 disabled={false}
                 id="_selection_column_1-checkbox"
@@ -1233,7 +1269,9 @@ exports[`EuiBasicTable with pagination, selection, sorting and column renderer 1
               key="_selection_column_2"
             >
               <EuiCheckbox
+                aria-label="Select this row"
                 checked={false}
+                compressed={false}
                 data-test-subj="checkboxSelectRow-2"
                 disabled={false}
                 id="_selection_column_2-checkbox"
@@ -1261,7 +1299,9 @@ exports[`EuiBasicTable with pagination, selection, sorting and column renderer 1
               key="_selection_column_3"
             >
               <EuiCheckbox
+                aria-label="Select this row"
                 checked={false}
+                compressed={false}
                 data-test-subj="checkboxSelectRow-3"
                 disabled={false}
                 id="_selection_column_3-checkbox"
@@ -1326,7 +1366,9 @@ exports[`EuiBasicTable with pagination, selection, sorting and multiple record a
           width="24px"
         >
           <EuiCheckbox
+            aria-label="Select all rows"
             checked={false}
+            compressed={false}
             data-test-subj="checkboxSelectAll"
             disabled={false}
             id="_selection_column-checkbox"
@@ -1363,7 +1405,9 @@ exports[`EuiBasicTable with pagination, selection, sorting and multiple record a
               key="_selection_column_1"
             >
               <EuiCheckbox
+                aria-label="Select this row"
                 checked={false}
+                compressed={false}
                 data-test-subj="checkboxSelectRow-1"
                 disabled={false}
                 id="_selection_column_1-checkbox"
@@ -1417,7 +1461,9 @@ exports[`EuiBasicTable with pagination, selection, sorting and multiple record a
               key="_selection_column_2"
             >
               <EuiCheckbox
+                aria-label="Select this row"
                 checked={false}
+                compressed={false}
                 data-test-subj="checkboxSelectRow-2"
                 disabled={false}
                 id="_selection_column_2-checkbox"
@@ -1471,7 +1517,9 @@ exports[`EuiBasicTable with pagination, selection, sorting and multiple record a
               key="_selection_column_3"
             >
               <EuiCheckbox
+                aria-label="Select this row"
                 checked={false}
+                compressed={false}
                 data-test-subj="checkboxSelectRow-3"
                 disabled={false}
                 id="_selection_column_3-checkbox"
@@ -1562,7 +1610,9 @@ exports[`EuiBasicTable with pagination, selection, sorting, column renderer and 
           width="24px"
         >
           <EuiCheckbox
+            aria-label="Select all rows"
             checked={false}
+            compressed={false}
             data-test-subj="checkboxSelectAll"
             disabled={false}
             id="_selection_column-checkbox"
@@ -1592,7 +1642,9 @@ exports[`EuiBasicTable with pagination, selection, sorting, column renderer and 
               key="_selection_column_1"
             >
               <EuiCheckbox
+                aria-label="Select this row"
                 checked={false}
+                compressed={false}
                 data-test-subj="checkboxSelectRow-1"
                 disabled={false}
                 id="_selection_column_1-checkbox"
@@ -1620,7 +1672,9 @@ exports[`EuiBasicTable with pagination, selection, sorting, column renderer and 
               key="_selection_column_2"
             >
               <EuiCheckbox
+                aria-label="Select this row"
                 checked={false}
+                compressed={false}
                 data-test-subj="checkboxSelectRow-2"
                 disabled={false}
                 id="_selection_column_2-checkbox"
@@ -1648,7 +1702,9 @@ exports[`EuiBasicTable with pagination, selection, sorting, column renderer and 
               key="_selection_column_3"
             >
               <EuiCheckbox
+                aria-label="Select this row"
                 checked={false}
+                compressed={false}
                 data-test-subj="checkboxSelectRow-3"
                 disabled={false}
                 id="_selection_column_3-checkbox"
