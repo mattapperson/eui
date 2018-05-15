@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import { findDOMNode } from 'react-dom';
 import { XYPlot, makeWidthFlexible, XAxis, YAxis, HorizontalGridLines, Crosshair } from 'react-vis';
 import PropTypes from 'prop-types';
 import { getPlotValues } from './utils';
@@ -11,9 +10,9 @@ export class XYChart extends PureComponent {
   constructor(props) {
     super(props);
     this._onMouseLeave = this._onMouseLeave.bind(this);
-    this._onNearestX = this._onNearestX.bind(this);
     this._getAllSeriesDataAtIndex = this._getAllSeriesDataAtIndex.bind(this);
     this._itemsFormat = this._itemsFormat.bind(this);
+    this._getAllPotentialDataTicks = this._getAllPotentialDataTicks.bind(this);
     this.seriesItems = {};
   }
   state = {
@@ -26,37 +25,26 @@ export class XYChart extends PureComponent {
     this.setState({ crosshairValues: [], lastCrosshairIndex: null });
   }
 
-  _onNearestX = (value, { index, event, innerX }) => {
-    if (this.state.lastCrosshairIndex === index) return;
 
-    const svg = findDOMNode(this._xyPlotRef).firstChild;
-    const rect = svg.getBoundingClientRect();
-    const mouseX = event.pageX - rect.left;
-    const closer = this._closestX(mouseX, innerX, this.state.lastIndexsX);
+  _getAllPotentialDataTicks = (xDomain) => {
+    console.log(xDomain)
+    const innerChartWidth = this._xyPlotRef._getDefaultScaleProps(this._xyPlotRef.props).xRange[1]
+    const maxChartXValue = (xDomain[1] - xDomain[0]) + 1;
 
-    if (closer === innerX) {
-      this.setState({
-        crosshairValues: this._getAllSeriesDataAtIndex(index),
-        lastCrosshairIndex: index,
-        lastIndexsX: innerX,
-      });
-    }
-  };
-
-  _closestX(mouseX, innerX, lastIndexsX) {
-    if (!lastIndexsX) return innerX;
-
-    const arr = [innerX, lastIndexsX];
-    let curr = arr[0];
-    let diff = Math.abs(mouseX - curr);
-    for (let val = 0; val < arr.length; val++) {
-      const newdiff = Math.abs(mouseX - arr[val]);
-      if (newdiff < diff) {
-        diff = newdiff;
-        curr = arr[val];
+    
+    return (e) => {
+      const mouseX = e.clientX - e.target.getBoundingClientRect().left;
+      const xBucketWidth = innerChartWidth / maxChartXValue;
+      const bucketIndex = Math.floor(mouseX / xBucketWidth)
+      
+      if (bucketIndex !== this.state.lastCrosshairIndex) {
+        this.setState({
+          crosshairValues: this._getAllSeriesDataAtIndex(bucketIndex),
+          lastCrosshairIndex: bucketIndex,
+        });
       }
+      
     }
-    return curr;
   }
 
   _registerSeriesDataCallback = (name, fn) => {
@@ -115,6 +103,12 @@ export class XYChart extends PureComponent {
       children,
     } = this.props;
     const plotValues = getPlotValues(this._getAllSeriesDataAtIndex(), width);
+    if (plotValues) {
+      plotValues.xDomain = plotValues.x.domain();
+
+      plotValues.yDomain = plotValues.y.domain();
+    }
+
     let colorIterator = 0;
 
     if (!children || errorText) {
@@ -126,6 +120,7 @@ export class XYChart extends PureComponent {
         ref={this._setXYPlotRef}
         dontCheckIfEmpty
         xType={mode}
+        onMouseMove={plotValues ? this._getAllPotentialDataTicks(plotValues.xDomain) : undefined}
         onMouseLeave={this._onMouseLeave}
         width={width}
         animation={true}
@@ -158,14 +153,11 @@ export class XYChart extends PureComponent {
         {React.Children.map(children, (child, i) => {
           const props = {
             registerSeriesDataCallback: this._registerSeriesDataCallback,
-            onNearestX: this._onNearestX,
+            onNearestX: () => {},
             id: `chart-${i}`,
           };
 
-          if (plotValues) {
-            plotValues.xDomain = plotValues.x.domain();
-            plotValues.yDomain = plotValues.y.domain();
-          }
+          
 
           if (!child.props.color) {
             props.color = VISUALIZATION_COLORS[colorIterator];
@@ -185,7 +177,7 @@ export class XYChart extends PureComponent {
             itemsFormat={this._itemsFormat}
           />
         )}
-
+        
         {onSelectEnd && <Highlight onSelectEnd={onSelectEnd} />}
       </XYPlot>
     );
