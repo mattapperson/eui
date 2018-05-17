@@ -204,8 +204,11 @@ import { ToastExample }
 import { ToolTipExample }
   from './views/tool_tip/tool_tip_example';
 
-  import { XYChartExample }
+import { XYChartExample }
   from './views/xy_chart/xy_chart_example';
+
+import { XYChartSeriesExample }
+  from './views/xy_chart_series/series_example'
 
   import { Changelog }
   from './views/package/changelog';
@@ -322,7 +325,12 @@ const navigation = [{
     TitleExample,
     ToastExample,
     ToolTipExample,
+  ].map(example => createExample(example)),
+}, {
+  name: 'Charts',
+  items: [
     XYChartExample,
+    XYChartSeriesExample,
   ].map(example => createExample(example)),
 }, {
   name: 'Forms',

@@ -1,25 +1,13 @@
 import React from 'react';
 import { GuideSectionTypes } from '../../components';
-import { EuiCallOut, EuiSpacer, EuiCode } from '../../../../src/components';
+import { EuiCode } from '../../../../src/components';
 import ChartExampleCode from './examples';
 import EmptyExampleCode from './example-empty';
 import AutoAxisChartExampleCode from './example-auto-axis';
 import { ExampleCrosshair } from './example-crosshair';
 
 export const XYChartExample = {
-  title: 'XYChart',
-  intro: (
-    <div>
-      <EuiCallOut title="Work in progress" color="warning">
-        <p>
-          This component is still undergoing active development and is of Alpha quality, while we currently feel the API is stable, the
-          implementation is still subject to change.
-        </p>
-      </EuiCallOut>
-
-      <EuiSpacer size="l" />
-    </div>
-  ),
+  title: 'XYChart',  
   sections: [
     {
       title: 'Complex example',
