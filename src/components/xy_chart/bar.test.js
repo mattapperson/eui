@@ -44,7 +44,7 @@ describe('EuiBar', () => {
   });
 
   describe('performance', () => {
-    it('renders 1000 items in under 0.5 seconds', () => {
+    it.skip('renders 1000 items in under 0.5 seconds', () => {
       const yTicks = [[0, 'zero'], [1, 'one']];
       const xTicks = [
         [0, '0'],
@@ -73,7 +73,7 @@ describe('EuiBar', () => {
       expect(runtime).toBeLessThan(500);
     });
 
-    it('renders 30 lines of 500 items in under 3 seconds', () => {
+    it.skip('renders 30 lines of 500 items in under 3 seconds', () => {
       const yTicks = [[0, 'zero'], [1, 'one']];
       const xTicks = [
         [0, '0'],
