@@ -225,6 +225,8 @@ XYChart.propTypes = {
   xAxisLocation: PropTypes.string,
   yAxisLocation: PropTypes.string,
   mode: PropTypes.string,
+  /** "y" or "x" depending on the stacking orientation */
+  stackBy: PropTypes.string,
   showTooltips: PropTypes.bool,
   errorText: PropTypes.string,
   crosshairX: PropTypes.number,

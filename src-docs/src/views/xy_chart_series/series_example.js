@@ -4,7 +4,7 @@ import LineSeriesExample from './line_series';
 import BarSeriesExample from './bar_series';
 import AreaSeriesExample from './area_series';
 import StackedBarSeriesExample from './stackedbar_series';
-import { EuiCode, EuiBar, EuiLine, EuiArea } from '../../../../src/components';
+import { EuiXYChart, EuiCode, EuiBar, EuiLine, EuiArea } from '../../../../src/components';
 
 export const XYChartSeriesExample = {
   title: 'XYChart Series',
@@ -102,11 +102,11 @@ export const XYChartSeriesExample = {
           </p>
         </div>
       ),
-      props: { EuiBar },
+      props: { EuiXYChart },
       source: [
         {
           type: GuideSectionTypes.JS,
-          code: require('!!raw-loader!./bar_series')
+          code: require('!!raw-loader!./stackedbar_series')
         },
         {
           type: GuideSectionTypes.HTML,
