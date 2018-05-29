@@ -132,6 +132,7 @@ export class XYChart extends PureComponent {
       width,
       height,
       mode,
+      stackBy,
       errorText,
       xAxisLocation,
       yAxisLocation,
@@ -161,6 +162,7 @@ export class XYChart extends PureComponent {
           ref={this._xyPlotRef}
           dontCheckIfEmpty
           xType={mode}
+          stackBy={stackBy}
           onMouseMove={this._onMouseMove}
           onMouseLeave={this._onMouseLeave}
           width={width}

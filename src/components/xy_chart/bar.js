@@ -12,7 +12,11 @@ class EUIBarSeries extends VerticalBarSeries {
           key={name}
           onSeriesClick={onClick}
           color={color}
-          style={{ rx: 2, ry: 2 }}
+          style={{
+            rx: 2,
+            ry: 2,
+            strokeWidth: 0,
+          }}
           data={data}
           {...rest}
         />

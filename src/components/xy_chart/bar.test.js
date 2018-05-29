@@ -107,3 +107,30 @@ describe('EuiBar', () => {
     });
   });
 });
+
+describe('StackedBar', () => {
+  test('stacked bars series are rendered', () => {
+    const component = mount(
+      <EuiXYChart
+        width={600}
+        height={200}
+        stackBy="y"
+      >
+        <EuiBar
+          name="test-chart-a"
+          data={[{ x: 0, y: 5 }, { x: 1, y: 15 }]}
+          color="#ff0000"
+          onClick={() => {}}
+        />
+        <EuiBar
+          name="test-chart-b"
+          data={[{ x: 0, y: 3 }, { x: 1, y: 10 }, { x: 3, y: 10 }]}
+          color="#ff0000"
+          onClick={() => {}}
+        />
+      </EuiXYChart>
+    );
+
+    expect(component).toMatchSnapshot();
+  });
+})
