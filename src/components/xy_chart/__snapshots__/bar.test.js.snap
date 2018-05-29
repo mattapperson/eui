@@ -6783,7 +6783,7 @@ exports[`EuiBar is rendered 1`] = `
 </FlexibleXYChart>
 `;
 
-exports[`StackedBar stacked bars series are rendered 1`] = `
+exports[`EuiBar stackedbar series are rendered 1`] = `
 <FlexibleXYChart
   height={200}
   stackBy="y"
