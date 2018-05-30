@@ -61,11 +61,19 @@ export class XYChart extends PureComponent {
       return seriesData.x === xBucket
     })[0])
 
-    if(chartDataForXValue.length === 0) {
-      chartDataForXValue.push({ x: xBucket, y: NO_DATA_VALUE })
+    if (chartDataForXValue.length === 0) {
+      chartDataForXValue.push({ x: xBucket, y: NO_DATA_VALUE });
     }
 
-    return chartDataForXValue;
+    return chartDataForXValue
+      // this is a double check if we don't zerofill each series
+      .filter(bucket => bucket)
+      .map(({ x, y , y0 }) => {
+        // if the chart is stacked we need to compute bucket y value as
+        // the difference between the starting y0 value and the final y value
+        const bucketYValue = y - (y0 || 0);
+        return { x, y: bucketYValue };
+      });
   };
 
   _itemsFormat = (values) => {
