@@ -3,10 +3,11 @@ import { GuideSectionTypes } from '../../components';
 import LineSeriesExample from './line_series';
 import BarSeriesExample from './bar_series';
 import AreaSeriesExample from './area_series';
-import { EuiCode, EuiBar, EuiLine, EuiArea } from '../../../../src/components';
+import StackedBarSeriesExample from './stackedbar_series';
+import { EuiXYChart, EuiCode, EuiBar, EuiLine, EuiArea } from '../../../../src/components';
 
 export const XYChartSeriesExample = {
-  title: 'XYChart Series',  
+  title: 'XYChart Series',
   sections: [
     {
       title: 'Line Series',
@@ -87,6 +88,34 @@ export const XYChartSeriesExample = {
       demo: (
         <div style={{ margin: 60 }}>
           <BarSeriesExample />
+        </div>
+      )
+    },
+    {
+      title: 'StackedBar Series',
+      text: (
+        <div>
+          <p>
+            Add multiple <EuiCode>EuiBar</EuiCode>
+            and specify <EuiCode>stackBy</EuiCode> props on <EuiCode>XYChart</EuiCode>
+            to display a stacked bar chart.
+          </p>
+        </div>
+      ),
+      props: { EuiXYChart },
+      source: [
+        {
+          type: GuideSectionTypes.JS,
+          code: require('!!raw-loader!./stackedbar_series')
+        },
+        {
+          type: GuideSectionTypes.HTML,
+          code: 'This component can only be used from React'
+        }
+      ],
+      demo: (
+        <div style={{ margin: 60 }}>
+          <StackedBarSeriesExample />
         </div>
       )
     }
