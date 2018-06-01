@@ -306,5 +306,8 @@ export {
   EuiXYChart,
   EuiLine,
   EuiArea,
-  EuiBar
+  EuiVerticalBarSeries,
+  EuiHorizontalBarSeries,
+  EuiVerticalRectSeries,
+  EuiHorizontalRectSeries,
 } from './xy_chart';
