@@ -310,4 +310,5 @@ export {
   EuiHorizontalBarSeries,
   EuiVerticalRectSeries,
   EuiHorizontalRectSeries,
+  EuiDefaultAxis,
 } from './xy_chart';
