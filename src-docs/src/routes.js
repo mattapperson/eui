@@ -207,6 +207,9 @@ import { ToolTipExample }
 import { XYChartExample }
   from './views/xy_chart/xy_chart_example';
 
+import { XYChartAxisExample }
+  from './views/xy_chart_axis/xy_axis_example';
+
 import { XYChartBarExample }
   from './views/xy_chart_bar/bar_example';
 
@@ -339,6 +342,7 @@ const navigation = [{
   name: 'Charts',
   items: [
     XYChartExample,
+    XYChartAxisExample,
     XYChartLineExample,
     XYChartAreaExample,
     XYChartBarExample,

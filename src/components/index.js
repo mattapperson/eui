@@ -304,6 +304,8 @@ export {
 
 export {
   EuiXYChart,
+  EuiXYChartAxisUtils,
+  EuiXYChartTextUtils,
   EuiLine,
   EuiArea,
   EuiVerticalBarSeries,
@@ -311,4 +313,6 @@ export {
   EuiVerticalRectSeries,
   EuiHorizontalRectSeries,
   EuiDefaultAxis,
+  EuiXAxis,
+  EuiYAxis,
 } from './xy_chart';
