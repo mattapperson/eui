@@ -315,4 +315,5 @@ export {
   EuiDefaultAxis,
   EuiXAxis,
   EuiYAxis,
+  EuiCrosshair,
 } from './xy_chart';
