@@ -339,16 +339,6 @@ const navigation = [{
     ToolTipExample,
   ].map(example => createExample(example)),
 }, {
-  name: 'Charts',
-  items: [
-    XYChartExample,
-    XYChartAxisExample,
-    XYChartLineExample,
-    XYChartAreaExample,
-    XYChartBarExample,
-    XYChartHistogramExample,
-  ].map(example => createExample(example)),
-}, {
   name: 'Forms',
   items: [
     FormLayoutsExample,
@@ -362,7 +352,19 @@ const navigation = [{
     FilterGroupExample,
     SearchBarExample,
   ].map(example => createExample(example)),
-}, {
+},
+{
+  name: 'XY Charts',
+  items: [
+    XYChartExample,
+    XYChartAxisExample,
+    XYChartLineExample,
+    XYChartAreaExample,
+    XYChartBarExample,
+    XYChartHistogramExample,
+  ].map(example => createExample(example)),
+},
+{
   name: 'Utilities',
   items: [
     AccessibilityExample,
