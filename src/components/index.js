@@ -319,4 +319,5 @@ export {
   EuiYAxis,
   EuiCrosshairX,
   EuiCrosshairY,
+  EuiLineAnnotation,
 } from './xy_chart';
