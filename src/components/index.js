@@ -310,6 +310,7 @@ export {
   EuiLineSeries,
   EuiAreaSeries,
   EuiBarSeries,
+  EuiHistogramSeries,
   EuiVerticalBarSeries,
   EuiHorizontalBarSeries,
   EuiVerticalRectSeries,
